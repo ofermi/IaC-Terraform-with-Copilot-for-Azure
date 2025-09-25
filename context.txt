@@ -24,7 +24,7 @@ When asked a build solution, you have to analyze image or text architecture desi
  - build the terraform solution
  - do in loop this raw below ,till you verify there is no missing resources besed on archoitecture analyzed:  
    when done to create solution, analyze the architecture diagram one time again more carefully to identify ALL the resources should have implemented and exists and if not continue to implement them 
-
+- fix errors in the files 
 
 
 ## Building Terraform solution instructions:
@@ -55,8 +55,8 @@ terraform
 │   └── common-resources/
 └── docs/
     |── architecture-diagrams/[save here the attached architecture for the solution]
-    |── "solution structure" that you build as file
-    └── "md" file to included all this solution implentation  - do not include spesific info that relevant to spesific environment, only to include the general solution.
+    |── [save here the final "solution structure" that you build as file]
+    └── [save here "md" file to included all solution implentation with explanation - do not include spesific info that relevant to spesific environment, only to include the general solution.]
 ```
 
 - always use the latest version of the module by checking the repository for the latest release
