@@ -1,0 +1,40 @@
+# Hub Virtual Network Module
+# Uses Azure Verified Module for Virtual Network
+
+terraform {
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "~> 3.0"
+    }
+  }
+}
+
+# Hub VNet using AVM
+module "hub_vnet" {
+  source  = "Azure/avm-res-network-virtualnetwork/azurerm"
+  version = "~> 0.1.0"
+
+  enable_telemetry    = var.enable_telemetry
+  location            = var.location
+  name                = var.vnet_name
+  resource_group_name = var.resource_group_name
+  virtual_network_address_space = var.address_space
+
+  subnets = {
+    gateway_subnet = {
+      name             = "GatewaySubnet"
+      address_prefixes = [var.gateway_subnet_prefix]
+    }
+    firewall_subnet = {
+      name             = "AzureFirewallSubnet"
+      address_prefixes = [var.firewall_subnet_prefix]
+    }
+    shared_services_subnet = {
+      name             = "snet-shared-${var.environment}-${var.location_short}-001"
+      address_prefixes = [var.shared_services_subnet_prefix]
+    }
+  }
+
+  tags = var.tags
+}

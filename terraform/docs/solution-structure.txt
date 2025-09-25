@@ -1,0 +1,118 @@
+# Terraform Solution Structure
+
+## Overview
+This document outlines the complete structure of the Contoso Terraform solution, built following Azure best practices and using Azure Verified Modules (AVM) where available.
+
+## Directory Structure
+
+```
+terraform/
+├── environments/
+│   └── dev/
+│       ├── main.tf                    # Terraform configuration and providers
+│       ├── variables.tf               # All variable definitions with validation
+│       ├── terraform.tfvars           # Environment-specific default values
+│       ├── outputs.tf                 # Solution outputs and resource information
+│       └── architectural-resources.tf # Central deployment file with all resources
+├── modules/
+│   ├── networking/
+│   │   ├── hub-vnet/
+│   │   │   ├── main.tf               # Hub VNet using AVM module
+│   │   │   ├── variables.tf          # Hub VNet input variables
+│   │   │   └── outputs.tf            # Hub VNet outputs
+│   │   ├── spoke-vnet/
+│   │   │   ├── main.tf               # Spoke VNet using AVM module
+│   │   │   ├── variables.tf          # Spoke VNet input variables
+│   │   │   └── outputs.tf            # Spoke VNet outputs
+│   │   ├── vnet-peering/
+│   │   │   ├── main.tf               # VNet peering configuration
+│   │   │   ├── variables.tf          # Peering input variables
+│   │   │   └── outputs.tf            # Peering outputs
+│   │   └── front-door/
+│   │       ├── main.tf               # Azure Front Door with WAF
+│   │       ├── variables.tf          # Front Door input variables
+│   │       └── outputs.tf            # Front Door outputs
+│   ├── compute/
+│   │   ├── virtual-machines/
+│   │   │   ├── main.tf               # VM module with Linux/Windows support
+│   │   │   ├── variables.tf          # VM input variables
+│   │   │   └── outputs.tf            # VM outputs
+│   │   └── app-service/
+│   │       ├── main.tf               # App Service using AVM module
+│   │       ├── variables.tf          # App Service input variables
+│   │       └── outputs.tf            # App Service outputs
+│   ├── data/
+│   │   └── storage-account/
+│   │       ├── main.tf               # Storage Account using AVM module
+│   │       ├── variables.tf          # Storage input variables
+│   │       └── outputs.tf            # Storage outputs
+│   └── security/
+│   └── monitoring/
+├── shared/
+│   └── common-resources/
+└── docs/
+    ├── architecture-diagrams/
+    │   └── Contoso.jpg               # Original architecture diagram
+    ├── solution-structure.txt        # This file
+    └── solution-features.md          # Detailed feature documentation
+```
+
+## File Descriptions
+
+### Environment Files (`environments/dev/`)
+
+- **main.tf**: Contains Terraform configuration, provider settings, and backend configuration for state management
+- **variables.tf**: Defines all input variables with descriptions, types, defaults, and validation rules
+- **terraform.tfvars**: Contains environment-specific values for variables
+- **outputs.tf**: Defines output values for resource information and connection details
+- **architectural-resources.tf**: Central file containing all resource deployments with conditional logic
+
+### Module Files (`modules/`)
+
+Each module follows the standard Terraform module structure:
+- **main.tf**: Resource definitions and module calls
+- **variables.tf**: Input variable definitions
+- **outputs.tf**: Output value definitions
+
+### Module Categories
+
+1. **Networking Modules**: Hub-spoke network architecture components
+2. **Compute Modules**: Virtual machines and application hosting services
+3. **Data Modules**: Storage and database services
+4. **Security Modules**: Security services (to be implemented)
+5. **Monitoring Modules**: Monitoring and logging services (to be implemented)
+
+## Naming Conventions
+
+Resources follow Azure best practices naming convention:
+```
+{resource-type}-{project}-{environment}-{location-short}-{serial}
+```
+
+Examples:
+- Resource Group: `rg-contoso-dev-eus-001`
+- Virtual Network: `vnet-contoso-dev-eus-001`
+- Virtual Machine: `vm-web-dev-eus-001`
+- Storage Account: `stcontosodeveus001` (alphanumeric only)
+
+## Deployment Flow
+
+1. **Resource Groups**: Created first to contain all resources
+2. **Networking**: Hub and spoke VNets with subnets
+3. **VNet Peering**: Establish connectivity between networks
+4. **Compute Resources**: VMs and App Services
+5. **Storage Resources**: Storage accounts and databases
+6. **Security Resources**: Key Vault, NSGs (future)
+7. **Monitoring**: Log Analytics, Application Insights (future)
+
+## Conditional Deployment
+
+All major resource categories can be toggled on/off using boolean variables:
+- Hub networking
+- Spoke networking (app and data tiers)
+- Virtual machines (web and app tiers)
+- App services
+- Storage accounts
+- Management resources
+
+This allows for flexible deployment scenarios and cost optimization.
