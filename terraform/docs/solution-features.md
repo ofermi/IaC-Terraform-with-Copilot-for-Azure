@@ -59,7 +59,71 @@ This Terraform solution implements a **hub-spoke network architecture** for Cont
 - **Always On**: Optional always-on configuration
 - **HTTPS Enforcement**: Security-first configuration
 
-### 🗄️ **Data & Storage**
+#### **Container Instances**
+- **Multi-OS Support**: Linux and Windows containers
+- **Networking Options**: Public, private, or no IP address types
+- **Resource Control**: Configurable CPU and memory allocation
+- **Health Monitoring**: Liveness and readiness probes
+- **Volume Mounting**: Support for Azure Files and empty directories
+- **Environment Variables**: Secure and standard environment variable support
+- **Restart Policies**: Always, Never, or OnFailure restart options
+
+### � **Monitoring & Analytics**
+
+#### **Log Analytics Workspace**
+- **Centralized Logging**: Central log collection and analysis for all Azure resources
+- **Query Capabilities**: KQL (Kusto Query Language) support for advanced analytics
+- **Retention Policies**: Configurable log retention (30-730 days)
+- **Workspace Isolation**: Dedicated workspace per environment
+- **Cross-Service Integration**: Integration with VMs, App Services, and all Azure services
+- **Data Sources**: VM insights, Azure activity logs, and custom data collection
+
+#### **Application Insights**
+- **Application Performance Monitoring**: End-to-end application telemetry and performance tracking
+- **Dependency Analysis**: Automatic dependency mapping and failure analysis
+- **Custom Metrics**: Support for custom application metrics and events
+- **Real-time Monitoring**: Live metrics stream for immediate insights
+- **Alert Integration**: Proactive monitoring with intelligent alerting
+- **Web App Integration**: Seamless integration with App Services for comprehensive monitoring
+
+#### **Front Door Analytics**
+- **Global Performance**: Worldwide application delivery optimization
+- **Traffic Analytics**: Request routing and geographic performance insights
+- **Health Monitoring**: Backend health probes and failover management
+- **Security Analytics**: WAF rule monitoring and attack pattern analysis
+- **Cache Performance**: CDN cache hit rates and optimization metrics
+
+### 🔄 **Backup & Recovery**
+
+#### **Recovery Services Vault**
+- **VM Backup**: Automated daily VM backups with configurable retention
+- **File Share Backup**: Azure Files backup with instant restore capability
+- **Cross-Region Recovery**: Geo-redundant storage for disaster recovery
+- **Policy Management**: Flexible backup policies with custom schedules
+- **Point-in-Time Recovery**: Multiple recovery points for granular restoration
+- **Backup Monitoring**: Integration with Azure Monitor for backup status
+
+#### **SQL Database Backup**
+- **Automated Backups**: Built-in automated backup with point-in-time restore
+- **Long-term Retention**: Extended backup retention for compliance requirements
+- **Geo-Replication**: Cross-region backup replication for disaster recovery
+- **Backup Encryption**: Transparent data encryption for backup security
+
+### �🗄️ **Data & Storage**
+
+#### **Azure SQL Database**
+- **SQL Server**: Managed SQL Server with configurable version
+- **Database Configuration**: Configurable SKUs (S0, S1, S2, etc.)
+- **Security Features**: 
+  - Firewall rules with Azure service access
+  - Azure AD administrator support
+  - TLS encryption for connections
+- **Backup & Recovery**:
+  - Point-in-time restore (7-35 days retention)
+  - Long-term retention policies (weekly, monthly, yearly)
+  - Automated backup scheduling
+- **High Availability**: Zone redundancy options
+- **Performance Tuning**: Auto-pause and min capacity for serverless
 
 #### **Storage Accounts**
 - **Performance Tiers**: Standard and Premium options
@@ -87,16 +151,32 @@ This Terraform solution implements a **hub-spoke network architecture** for Cont
 
 ### 🔒 **Security Features**
 
+#### **Azure Key Vault**
+- **Secrets Management**: Centralized storage for passwords, keys, and certificates
+- **Network Access Control**: Configurable network ACLs and firewall rules
+- **Azure AD Integration**: Support for service principals and managed identities
+- **Encryption**: Hardware Security Module (HSM) backed encryption
+- **Access Policies**: Granular permissions for different security principals
+
+#### **Network Security Groups (NSGs)**
+- **Hub NSG**: Controls traffic to/from hub services (RDP access)
+- **Application Spoke NSG**: Web tier security (HTTP/HTTPS ports)  
+- **Data Spoke NSG**: Database tier security (SQL port from app tier only)
+- **Custom Rules**: Configurable security rules per environment
+- **Default Deny**: Security-first approach with explicit allow rules
+
 #### **Network Security**
 - **TLS Enforcement**: Minimum TLS 1.2 for all services
 - **HTTPS-Only**: Enforced HTTPS traffic for web services
 - **Private Networking**: Use of private subnets and endpoints
 - **Network Segmentation**: Separate tiers for different workloads
+- **Firewall Rules**: SQL Database firewall with Azure service access
 
 #### **Access Management**
 - **SSH Key Authentication**: Passwordless authentication for Linux VMs
 - **Strong Password Policies**: Complex passwords for Windows VMs
 - **Service Principal Support**: Ready for CI/CD integration
+- **Azure AD Authentication**: SQL Database Azure AD administrator support
 
 ### ⚙️ **Configuration Management**
 
@@ -184,48 +264,53 @@ terraform apply
 - Adjust network addressing as needed
 
 ### **Scaling Options**
-- Add additional spoke networks for new applications
-- Scale VM counts and sizes based on requirements
-- Implement additional storage accounts for different workloads
-- Extend with monitoring and security modules
+- **Network Expansion**: Add additional spoke networks through boolean flags
+- **Compute Scaling**: Scale VM counts via `vm_count` variables per spoke
+- **Storage Scaling**: Deploy multiple storage accounts with different tiers
+- **Container Scaling**: Scale container instances with CPU/memory adjustments
+- **Database Scaling**: Adjust SQL Database SKUs (S0, S1, S2, etc.)
+- **Backup Scaling**: Configure retention policies and cross-region replication
 
 ## 📊 **Resource Coverage**
 
 | Resource Type | Implementation Status | AVM Used | Notes |
 |---------------|----------------------|----------|-------|
-| Resource Groups | ✅ Complete | N/A | Standard Terraform |
-| Virtual Networks | ✅ Complete | ✅ Yes | Hub-spoke architecture |
-| VNet Peering | ✅ Complete | N/A | Custom module |
-| Virtual Machines | ✅ Complete | ⚠️ Partial | Standard Terraform (AVM compatibility issues) |
-| App Services | ✅ Complete | ✅ Yes | Linux-based plans |
-| Storage Accounts | ✅ Complete | ✅ Yes | Security-first configuration |
-| **Azure Front Door** | ✅ **Complete** | **N/A** | **Global load balancer with WAF** |
-| Key Vault | 🔄 Planned | ✅ Available | Future implementation |
-| SQL Database | 🔄 Planned | ✅ Available | Future implementation |
+| **Resource Groups** | ✅ **Complete** | N/A | 4-tier structure (Hub, App, Data, Shared) |
+| **Virtual Networks** | ✅ **Complete** | ✅ Yes | Hub-spoke architecture |
+| **VNet Peering** | ✅ **Complete** | N/A | Custom module |
+| **Virtual Machines** | ✅ **Complete** | ⚠️ Partial | Multi-OS support with NICs and disks |
+| **App Services** | ✅ **Complete** | ✅ Yes | Linux-based plans with scaling |
+| **Storage Accounts** | ✅ **Complete** | ✅ Yes | Multiple tiers with security features |
+| **Azure Front Door** | ✅ **Complete** | N/A | Global CDN with WAF and private link |
+| **Key Vault** | ✅ **Complete** | ✅ Yes | Secrets management with network ACLs |
+| **SQL Database** | ✅ **Complete** | ✅ Yes | Server, database, firewall, backup policies |
+| **Network Security Groups** | ✅ **Complete** | ✅ Yes | Hub and spoke security rules |
+| **Log Analytics** | ✅ **Complete** | ✅ Yes | Centralized logging workspace |
+| **Application Insights** | ✅ **Complete** | N/A | APM with workspace integration |
+| **Container Instances** | ✅ **Complete** | N/A | Full container orchestration |
+| **Recovery Services Vault** | ✅ **Complete** | N/A | VM and file share backup policies |
 | Application Gateway | 🔄 Planned | ✅ Available | Future implementation |
 | Azure Firewall | 🔄 Planned | ✅ Available | Future implementation |
-| Log Analytics | 🔄 Planned | ✅ Available | Future implementation |
-| Application Insights | 🔄 Planned | ✅ Available | Future implementation |
 
-## 🎯 **Future Enhancements**
+## 🎯 **Current Implementation Status**
 
-### **Phase 2 - Security & Compliance**
-- Azure Key Vault integration
-- Network Security Groups (NSGs)
-- Azure Firewall deployment
-- Private DNS zones
-- Azure Security Center integration
+### **✅ Completed Features**
+- **Security**: Key Vault, Network Security Groups, TLS encryption
+- **Networking**: Hub-spoke architecture with VNet peering
+- **Compute**: Virtual machines, App Services, Container Instances
+- **Data**: SQL Database with backup policies and firewall rules
+- **Storage**: Multi-tier storage accounts with security features
+- **Monitoring**: Log Analytics and Application Insights integration
+- **Backup**: Recovery Services Vault with automated policies
+- **Global Distribution**: Azure Front Door with CDN and WAF
 
-### **Phase 3 - Data & Analytics**
-- Azure SQL Database deployment
-- Cosmos DB integration
-- Data Factory pipelines
-- Azure Synapse Analytics
-
-### **Phase 4 - Monitoring & Management**
-- Azure Monitor integration
-- Log Analytics workspace
-- Application Insights
+### **🔄 Future Enhancements**
+- **Azure Firewall**: Centralized network security for hub network
+- **Application Gateway**: Layer 7 load balancing with WAF capabilities
+- **Private DNS Zones**: Internal name resolution for private endpoints
+- **Cosmos DB**: NoSQL database integration for global applications
+- **Data Factory**: ETL pipelines for data integration scenarios
+- **Azure Synapse**: Analytics workspace for big data processing
 - Azure Automation accounts
 - Backup and disaster recovery
 
