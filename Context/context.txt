@@ -43,7 +43,7 @@ When asked a build solution, you have to analyze image or text architecture desi
 - add dependencies to enforce resource creation order (i.e VNets before dependent resources, web apps before Front Door, etc.).
 - ask the user to confirm this terrafotm  architecture structureas below .  if to another architecture approach ask  and apply into the solution .
 - condider also environments in the solution
-- TERRAFORM STRUCTURE STANDARDS example, must to add moduls based on resorces existing in the architecture solution to build .
+- TERRAFORM STRUCTURE STANDARDS example as bellow, must to add moduls based on resorces existing in the architecture solution to build :
 
 ```
 terraform
@@ -101,6 +101,7 @@ terraform
 
 
 ## limitation
+
 
 
 
