@@ -49,7 +49,7 @@ When asked a build solution, you have to analyze image or text architecture desi
        |                 |
        │                 └── main.tf
        │                 └── resources.tf [all resources to be created using resources that must defined under modules]
-       │                 └── variables.tf [one cetral file to include all variables for the terraform architcure]
+       │                 └── terraform.tfvars  [one cetral file to include all variables for the terraform architcure]
        │                 └── output.tf [to be used by the modules or other directories]
        ├── modules/
        │   |
@@ -66,7 +66,7 @@ When asked a build solution, you have to analyze image or text architecture desi
    a. under environment in the solution create one cetral file to included all resources to deploy , it should be used the model resource under modules directory
    b. for each resource to create must include conditional to be cretaed or not (0,1)  which defined to be created as defual with "1" in central variable file 
    c. each resouces in that file  should be mark in relevant title comments 
- 11. Terraform variables file variables.tf:
+ 11. terraform.tfvars file:
    a.  all parameterized configuration resource names,adress spaces, regions, SKU, and other resource parameterized should as defined in one central file    (i.e , variables.tf or such)
    b. all modules will read their configuration from these files no hard-coded parameters in modules parameters. 
    c. ensure all modeled enable to use these parameters
@@ -94,6 +94,7 @@ When asked a build solution, you have to analyze image or text architecture desi
        prompt.... "  - you must continue with no asking to "continue" 
     6. continue to build solution do not ask to confirm with "continue"  to  "Copilot has been working on this problem for a while. It can continue to iterate, 
        or you can send a new message to refine your prompt." you must assume continue automaticaly till you finnish to build solution.
+
 
 
 
