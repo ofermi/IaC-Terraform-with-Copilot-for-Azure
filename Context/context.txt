@@ -77,10 +77,10 @@ When asked a build solution, you have to analyze image or text architecture desi
    b. for each resource to create must include conditional to be cretaed or not (0,1)  which defined to be created as defual with "1" in central variable file 
    c. each resouces in that file  should be mark in relevant title comments 
  11. Terraform variables file variables.tf:
-   a. consider all parameterized configuration resource names,adress spaces, regions, SKU, and other resource parameterized should as defined in one central file    (i.e , variables.tf or such)
+   a.  all parameterized configuration resource names,adress spaces, regions, SKU, and other resource parameterized should as defined in one central file    (i.e , variables.tf or such)
    b. all modules will read their configuration from these files no hard-coded parameters in modules parameters. 
    c. ensure all modeled enable to use these parameters
-   d. ask the user for the construction convention of the naming such as "rg_name: rg-${var.project}-${var.env}-${var.location_short}-${var.name_serial}"     
+   d. all resourceas conditional to be cretaed or not (0,1) defined as defauld to be creaatd "1", this would concentrate in differnt section in that file at the bhead of the file. 
  12.  Terraform security aspects:
        if not defied elswhere an inputs, as follow:
           a. Apply principle of least privilege with Azure RBAC
@@ -96,6 +96,7 @@ When asked a build solution, you have to analyze image or text architecture desi
 
 
  
+
 
 
 
