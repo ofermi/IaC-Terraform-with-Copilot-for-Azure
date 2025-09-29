@@ -14,7 +14,7 @@ When asked a build solution, you have to analyze image or text architecture desi
         * if not defined ask for confirtamate from these addresses you will use. 
         * valivate there is there are no conflicts in others 
         * if there is any on-premis configuration with azure vnet  connection,  must validate with the user there is no any conflicts.
-    6.  present to user the terraform architecture design and ask to confirm      
+    6.  present to user the terraform structure your are going to build and ask to confirm      
     7.  build the terraform solution:
       a. build terraform solution based on the oinstruction in all under "###" bulllets bellows 
       b. verify you didn't missed resources besed on analyzed architecture  
@@ -96,6 +96,7 @@ When asked a build solution, you have to analyze image or text architecture desi
 
 
  
+
 
 
 
