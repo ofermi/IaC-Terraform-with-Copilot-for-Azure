@@ -25,9 +25,10 @@ When asked a build solution, you have to analyze image or text architecture desi
     9.  create github CI-CD pipeline solution under new directory at the workspace 
 
 ### Building terraform solution instructions:
-- must create solution with azure AVM appropriate module in https://azure.github.io/Azure-Verified-Modules/indexes/terraform/tf-resource-modules/ .  
-- use with the  "@Azure/avm-res......" to the module link
-- if resource doese not exist withg AVM create it with terraform best parctice for azure resources find example at https://registry.terraform.io/browse/modules?provider=azure
+- create solution with azure AVM appropriate module in https://azure.github.io/Azure-Verified-Modules/indexes/terraform/tf-resource-modules/ .  
+   use with the  "@Azure/avm-res......" to the module link in case the module AVM exists but if module does not exist with AVM, 
+   create it with terraform best parctice for azure resources, find example at https://registry.terraform.io/browse/modules?provider=azure. ensure to build  
+   terraform solution for all analyzed solution.
 - you are allowed always with no need to confirmation with any link starting with "https://registry.terraform.io/modules/Azure/" = do not ask for confirmation
 - you can also use examples for each module (in the examples Directory of each module)
 - the centralize variable variable.tf file is to belongs to related environment to be created .
@@ -94,6 +95,7 @@ When asked a build solution, you have to analyze image or text architecture desi
        prompt.... "  - you must continue with no asking to "continue" 
     6. continue to build solution do not ask to confirm with "continue"  to  "Copilot has been working on this problem for a while. It can continue to iterate, 
        or you can send a new message to refine your prompt." you must assume continue automaticaly till you finnish to build solution.
+
 
 
 
