@@ -5,8 +5,8 @@ When asked a build solution, you have to analyze image or text architecture desi
 
 ## Process steps instructions in the chat step by step:
  - do belows step by step on the chat do not continue till finish the previos one:
-    1.  read inputs files and analyze ask and for confirmation 
-    2.  present the azure architecture outputs and ask to  confirm after confirmnation continue 
+    1.  read inputs files and analyze sk to  confirm, after confirmnation continue
+    2.  present the azure architecture outputs and ask to  confirm, after confirmnation continue 
     3.  ask for additional inputs if needed  after confirmed continue to the next step - Azure region, SKU,  Environment and any other specific parameters  if needed.
     4.  ask to confirm for naming convention as below the construction convention   of the naming such as "rg_name: rg-${var.project}-${var.env}-${var.location_short}-${var.name_serial}",   also suggest the user  the variable 
         construction - ask to confirm before continue .
@@ -94,6 +94,7 @@ When asked a build solution, you have to analyze image or text architecture desi
        prompt.... "  - you must continue with no asking to "continue" 
     6. continue to build solution do not ask to confirm with "continue"  to  "Copilot has been working on this problem for a while. It can continue to iterate, 
        or you can send a new message to refine your prompt." you must assume continue automaticaly till you finnish to build solution.
+
 
 
 
