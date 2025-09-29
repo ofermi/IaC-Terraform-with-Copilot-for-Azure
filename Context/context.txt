@@ -22,7 +22,7 @@ When asked a build solution, you have to analyze image or text architecture desi
     -  ask to confirm to use default address spaces if not defined, or get the changes from user continue to the next step
     - ask user to confirm terraform teructure solution that you goiing to create     
  - build the terraform solution:
-   - build terraform solution 
+   - build terraform solution based on the oinstruction in all under "###" bulllets bellows 
    - verify you didn't missed resources besed on archoitecture analyzed 
    - when done to create trraform solution, analyze to identify ALL the resources have implemented and exists 
    - if resource is missing continue to implement them 
@@ -102,3 +102,4 @@ terraform
 
 
 ## limitation
+
