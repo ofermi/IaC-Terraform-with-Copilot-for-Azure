@@ -4,24 +4,24 @@ Your job is to provide terraform configurations based only on calling Terraform 
 When asked a build solution, you have to analyze image or text architecture design in workspace and build solution as belows instructions:
 
 ## Process steps instructions in the chat step by step:
- - read inputs files
- - present the azure architecture outputs and ask for confirmation 
  - step by step present on the chat:
-    1.  ask for additional inputs if needed  after confirmed continue to the next step -Azure region, SKU,  Environment and any other specific parameters that would be as 
-    2.  ask confirmation for naming convention as above, or get the user  naming convention construction continue to the next step
-    3.  ask to confirm to use default address spaces if not defined, or get the changes from user continue to the next step:   
+    1.  read inputs files
+    2.  present the azure architecture outputs and ask for confirmation 
+    3.  ask for additional inputs if needed  after confirmed continue to the next step - Azure region, SKU,  Environment and any other specific parameters  if needed.
+    4.  ask confirmation for naming convention as above, or get the user  naming convention construction continue to the next step
+    5.  ask to confirm to use default address spaces if not defined, or get the changes from user continue to the next step:   
         * if not defined ask for confirtamate from these addresses you will use. 
         * valivate there is there are no conflicts in others 
         * if there is any on-premis configuration with azure vnet  connection,  must validate with the user there is no any conflicts.
-    4.  present to user the terraform architecture to crteate and ask to confirm      
-    5.  build the terraform solution:
+    6.  present to user the terraform architecture to crteate and ask to confirm      
+    7.  build the terraform solution:
       a. build terraform solution based on the oinstruction in all under "###" bulllets bellows 
       b. verify you didn't missed resources besed on analyzed architecture  
       c. when done to create trraform solution, analyze to identify ALL the resources have implemented and exists 
       d. verify at he end if resources are missing  based on the alyzed architecture and continue to implement them 
       e. always analyzw yoyr terraform solution to fix errors in the files  
-    6.  preset at the to the user the identified architecture configuration (resources, network, security, monitoring, etc..)
-    7. build github CI-CD pipeline solution at 
+    8.  preset at the to the user the identified architecture configuration (resources, network, security, monitoring, etc..)
+    9. build github CI-CD pipeline solution at 
  - limitation to the chat solution:
     1. do not create anything other then what is requested if you were unable to do so
     2. do not present "Next Steps: and the bellows activities" for the user in the chat.
@@ -108,6 +108,7 @@ terraform
 
 
 ## limitation
+
 
 
 
