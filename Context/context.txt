@@ -7,9 +7,12 @@ When asked a build solution, you have to analyze image or text architecture desi
  - read inputs files
  - present the azure architecture outputs and ask for confirmation after confirmation continue
  - step by step present on the chat:
-    1.  ask for additional inputs if needed  after confirmed continue to the next step
+    1.  ask for additional inputs if needed  after confirmed continue to the next step -Azure region, SKU,  Environment and any other specific parameters that would be as 
     2.  ask confirmation for naming convention as above, or get the user  naming convention construction continue to the next step
-    3.  ask to confirm to use default address spaces if not defined, or get the changes from user continue to the next step
+    3.  ask to confirm to use default address spaces if not defined, or get the changes from user continue to the next step:   
+        * if not defined ask for confirtamate from these addresses you will use. 
+        * valivate there is there are no conflicts in others 
+        * if there is any on-premis configuration with azure vnet  connection,  must validate with the user there is no any conflicts.
     4.  present to user the terraform architecture to crteate and ask to confirm      
     5.  build the terraform solution:
       a. build terraform solution based on the oinstruction in all under "###" bulllets bellows 
@@ -26,32 +29,42 @@ When asked a build solution, you have to analyze image or text architecture desi
     4. when you start build terraform solution with the files continue and build the solution, do not ask user if he wants to proceed.
     5. never to present "Copilot has been working on this problem for a while. It can continue to iterate, or you can send a new message to refine your 
        prompt.... "  - you must continue with no asking to "continue" 
+    6. continue to build solution do not ask to confirm with "continue"  to  "Copilot has been working on this problem for a while. It can continue to iterate, 
+       or you can send a new message to refine your prompt." you must assume continue automaticaly till you finnish to build solution.
+
 
 ### Building Terraform solution instructions:
 - must create solution with azure AVM appropriate module in https://azure.github.io/Azure-Verified-Modules/indexes/terraform/tf-resource-modules/ .  
 - use with the  "@Azure/avm-res......" to the module link
 - if resource doese not exist withg AVM create it with terraform best parctice for azure resources find example at https://registry.terraform.io/browse/modules?provider=azure
-- you are allowed allowes with no need to confirmed with any link starting with "https://registry.terraform.io/modules/Azure/" = do not ask for confirmation
+- you are allowed always with no need to confirmation with any link starting with "https://registry.terraform.io/modules/Azure/" = do not ask for confirmation
 - you can also use examples for each module (in the examples Directory of each module)
-- present resources related to subnet and vnet  
-- ask for confirmation for identified architecture configuration to confirm.
-- after confirmation  ask for additional inputs if user would like to add Azure region, SKU, and any other specific parameters that would be as variables in central variable.tf to be change also later
 - the centralize variable variable.tf file is to belongs to related environment to be created .
 - start build the required terraform configurations based on what identified and user inputs.
 - if do not have an AVM module yet, mandatory to create the solution based on https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs empeshise to the user this modules not as AVM solution but do not ask for creation , it is mandatory 
-- create the solution under new "Terraform" Directory and save it as a files in the local workspace 
-- main.tf includes terraform parameters and provider as required all resources would be defined in related ".tf" files
-- each resource sould be created under relevant module as general resource, only to implement the resource with variaables that will 
-- allocate resources to each relevant module file as following  terraform structrure standard exmple in bellow  as per azure definition resources  
-- add dependencies to enforce resource creation order (i.e VNets before dependent resources, web apps before Front Door, etc.).
-- ask the user to confirm this terrafotm  architecture structureas below .  if to another architecture approach ask  and apply into the solution .
-- condider also environments in the solution
-- TERRAFORM STRUCTURE STANDARDS example as bellow, must to add moduls based on resorces existing in the architecture solution to build :
+- Terratorm architectore solution:
+  1. build terraform solution under new "terraform" Directory and save it as a file in the local workspace 
+  2. must all variables in central variable.tf to be change also later unter Environment dirctory
+  3. main.tf includes terraform parameters and provider as required
+  4. each resource would be defined in related ".tf" file undere modules directory
+  5. implement the resource with variarles that will be defined in varible central file under enviroinment.
+  6. create dependencies to enforce resource creation order (i.e VNets before dependent resources, web apps before Front Door, etc.).
+  7. always use the latest version of the module by checking the repository for the latest release
+  8. use config file when needed 
+
+- continue to build solution do not ask to confirm with "continue"  to  "Copilot has been working on this problem for a while. It can continue to iterate, or you can send a new message to refine your prompt." you must assume continue automaticaly till you finnish to build solution.
+7. TERRAFORM STRUCTURE STANDARDS example as bellow, must to add moduls based on resorces existing in the architecture solution to build , allocate resources to  each relevant module file as following  :
+ :
 
 ```
 terraform
 ├── environments/
-│   └──[condider create based user input - Dev is a defualt ]/
+│   └──[condider create based user input - Dev as a defualt ]/
+|                 |
+│                 └── main.tf
+│                 └── resources.tf [all resources should be creeated]
+│                 └── variables.tf
+│                 └── output.tf
 ├── modules/
 │   |
 │   └── [condider to add any relevant module]/
@@ -63,16 +76,7 @@ terraform
     └── [save here "md" file to included all solution implentation with explanation - do not include spesific info that relevant to spesific environment, only to include the general solution.]
 ```
 
-- always use the latest version of the module by checking the repository for the latest release
-- make sure to create dependent resources when needed (such as resource groups,peering,Firewall etc..)
-- read through the variables Descriptions before writing the config, to learn how to use them or if there is some sort of requirement
-- also read all validation blocks of the variables to learn how to correctly configure the variables
-- present to the usere address spacess you going to use :
-        * if not defined ask for confirtamate from these addresses you will use. 
-        * valivate there is there are no conflicts in others 
-        * if there is any on-premis configuration with azure vnet  connection, 
-          must validate with the user there is no any conflicts.
-- continue to build solution do not ask to confirm with "continue"  to  "Copilot has been working on this problem for a while. It can continue to iterate, or you can send a new message to refine your prompt." you must assume continue automaticaly till you finnish to build solution.
+
 
 
 
@@ -104,6 +108,7 @@ terraform
 
 
 ## limitation
+
 
 
 
