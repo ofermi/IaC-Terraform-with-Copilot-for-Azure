@@ -7,7 +7,7 @@ When asked a build solution, you have to build solution following belows instruc
 
 ## Process steps instructions in the chat step by step:
  - do belows step by step on the chat do not continue till finish the previos one:
-    1.  read inputs files and analyze  ask to confirm before continue to the next step.
+    1.  read inputs files and analyze all azure resources and azure landing zone configuration, prent and ask to confirm it before continue to the next step.
     2.  present the azure architecture outputs and ask to  confirm, after confirmnation continue to the next step
     3.  ask for additional inputs if needed   ask to confirm before continue  to the next step - Azure region, SKU,  Environment and any other specific parameters  if needed.
     4.  ask to confirm for naming convention as below the construction convention   of the naming such as "rg_name: rg-${var.project}-${var.env}-${var.location_short}-${var.name_serial}",   also suggest the user  the variable 
@@ -95,6 +95,7 @@ When asked a build solution, you have to build solution following belows instruc
     6. continue to build solution do not ask to confirm with "continue"  to  "Copilot has been working on this problem for a while. It can continue to iterate, 
        or you can send a new message to refine your prompt." you must assume continue automaticaly till you finnish to build solution.
     7. you are allowed always with no need to confirmation with any link starting with "https://registry.terraform.io/modules/Azure/" = do not ask for confirmation
+
 
 
 
