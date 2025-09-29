@@ -53,7 +53,7 @@ When asked a build solution, you have to analyze image or text architecture desi
        │                 └── output.tf [to be used by the modules or other directories]
        ├── modules/
        │   |
-       │   └── [ add to add any relevant module for resource to be created]/
+       │   └── [ dd any relevant module for resource to be created witjh the solution]/
        ├── shared/
        │   └── common-resources/
        └── docs/
@@ -94,6 +94,7 @@ When asked a build solution, you have to analyze image or text architecture desi
        prompt.... "  - you must continue with no asking to "continue" 
     6. continue to build solution do not ask to confirm with "continue"  to  "Copilot has been working on this problem for a while. It can continue to iterate, 
        or you can send a new message to refine your prompt." you must assume continue automaticaly till you finnish to build solution.
+
 
 
 
