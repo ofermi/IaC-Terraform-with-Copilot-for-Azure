@@ -6,7 +6,7 @@ When asked a build solution, you have to analyze image or text architecture desi
 ## Mandatory General instructions build solution:
 - must create solution with azure AVM appropriate module in https://azure.github.io/Azure-Verified-Modules/indexes/terraform/tf-resource-modules/ .  
 - use with the  "@Azure/avm-res......" to the module link
-- if resource doese not exist withg AVM create it with terraform best parctice for azure resources for example : https://registry.terraform.io/browse/modules?provider=azure
+- if resource doese not exist withg AVM create it with terraform best parctice for azure resources find example at https://registry.terraform.io/browse/modules?provider=azure
 - you can also use examples for each module (in the examples Directory of each module)
 - do not create anything other then what is requested if you were unable to do so
 - do not present "Next Steps: and the bellows activities" for the user in the chat.
@@ -20,14 +20,16 @@ When asked a build solution, you have to analyze image or text architecture desi
     -  ask for additional inputs if needed  after confirmed continue to the next step
     -  ask confirmation for naming convention as above, or get the user  naming convention construction continue to the next step
     -  ask to confirm to use default address spaces if not defined, or get the changes from user continue to the next step
- - ask user to confirm terraform teructure solution to be created based on the building solution below ask to confirm  it   
- - build the terraform solution
- - do in loop this raw below ,till you verify there is no missing resources besed on archoitecture analyzed:  
-   when done to create solution, analyze the architecture diagram one time again more carefully to identify ALL the resources should have implemented and exists and if not continue to implement them 
-- fix errors in the files 
+    - ask user to confirm terraform teructure solution that you goiing to create     
+ - build the terraform solution:
+   - build terraform solution 
+   - verify you didn't missed resources besed on archoitecture analyzed 
+   - when done to create trraform solution, analyze to identify ALL the resources have implemented and exists 
+   - if resource is missing continue to implement them 
+   - fix errors in the files at the end of the building  
 
 
-## Building Terraform solution instructions:
+### Building Terraform solution instructions:
 - preset to the user the identified architecture configuration (resources, network, security, monitoring, etc..)
 - present resources related to subnet and vnet  
 - ask for confirmation for identified architecture configuration to confirm.
@@ -68,14 +70,16 @@ terraform
         * valivate there is there are no conflicts in others 
         * if there is any on-premis configuration with azure vnet  connection, 
           must validate with the user there is no any conflicts.
-- do not present to the user "Copilot has been working on this problem for a while. It can continue to iterate, or you can send a new message to refine your prompt." you must assume continue automaticaly till you finnish to build solution.
+- continue to build solution do not ask to confirm with "continue"  to  "Copilot has been working on this problem for a while. It can continue to iterate, or you can send a new message to refine your prompt." you must assume continue automaticaly till you finnish to build solution.
 
-###  architectural-resources.tf one cetral file for Building solution under dedicated environment
+
+
+####  architectural-resources.tf one cetral file for Building solution under dedicated environment
    - under environment in the solution create one cetral file to included all resources to deploy
-   - for each resource to create must include conditional tp be cretaed or not (0,1) that user can change by himself when deplot the code. default if to be created.
+   - for each resource to create must include conditional to be cretaed or not (0,1) that user can change by himself when deplot the code. default if to be created.
    - each resouces in that file  should be mark in relevant title comments 
 
-## Terraform variables configuration:
+### Terraform variables configuration:
 - consider all parameterized configuration resource names,adress spaces, regions, SKU, and other resource parameterized should as defined in one central file (i.e ,main variable.tf or such)
 - all modules will read their configuration from these files no hard-coded parameters in modules parameters. 
 - ensure all modeled enable to use these parameters
@@ -83,7 +87,7 @@ terraform
   i.e you have to get from user the variable construction he want to use for each resource tou able to ask the  construction on azure best practice naming conation.
 
  
-## Follow Terraform security aspects:
+###  Terraform security aspects:
 - if not defied elswhere an inputs, as follow:
       - Apply principle of least privilege with Azure RBAC
       - Implement network security with NSGs, ASGs, and Azure Firewall
@@ -92,10 +96,9 @@ terraform
       - Implement proper identity and access management with Azure AD
       - Follow Azure security baselines and benchmarks
 
-## QA and fix errors :
+### QA and fix errors :
 - when done with the terraform build solution, review all the terraform files solution and fix errors to ensure all categories created based on 
  the  above requirements so that ther code is ready to deploy. if any consideration to fix or adjustment to do ,prompt it
 
 
 ## limitation
- - do not do anything else except what defined above
