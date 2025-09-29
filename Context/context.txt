@@ -10,7 +10,7 @@ When asked a build solution, you have to analyze image or text architecture desi
     1.  ask for additional inputs if needed  after confirmed continue to the next step
     2.  ask confirmation for naming convention as above, or get the user  naming convention construction continue to the next step
     3.  ask to confirm to use default address spaces if not defined, or get the changes from user continue to the next step
-    4.  present to usedr the terraform architecture to crteate and ask to confirm      
+    4.  present to user the terraform architecture to crteate and ask to confirm      
     5.  build the terraform solution:
       a. build terraform solution based on the oinstruction in all under "###" bulllets bellows 
       b. verify you didn't missed resources besed on archoitecture analyzed 
@@ -101,6 +101,7 @@ terraform
 
 
 ## limitation
+
 
 
 
