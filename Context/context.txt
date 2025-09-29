@@ -5,7 +5,7 @@ When asked a build solution, you have to analyze image or text architecture desi
 
 ## Process steps instructions in the chat step by step:
  - read inputs files
- - present the azure architecture outputs and ask for confirmation after confirmation continue
+ - present the azure architecture outputs and ask for confirmation 
  - step by step present on the chat:
     1.  ask for additional inputs if needed  after confirmed continue to the next step -Azure region, SKU,  Environment and any other specific parameters that would be as 
     2.  ask confirmation for naming convention as above, or get the user  naming convention construction continue to the next step
@@ -108,6 +108,7 @@ terraform
 
 
 ## limitation
+
 
 
 
