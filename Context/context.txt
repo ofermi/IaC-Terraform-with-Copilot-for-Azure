@@ -7,16 +7,16 @@ When asked a build solution, you have to analyze image or text architecture desi
  - read inputs files
  - present the azure architecture outputs and ask for confirmation after confirmation continue
  - step by step present on the chat:
-    -  ask for additional inputs if needed  after confirmed continue to the next step
-    -  ask confirmation for naming convention as above, or get the user  naming convention construction continue to the next step
-    -  ask to confirm to use default address spaces if not defined, or get the changes from user continue to the next step
-    -  ask user to confirm terraform teructure solution that you goiing to create     
+    1.  ask for additional inputs if needed  after confirmed continue to the next step
+    2.  ask confirmation for naming convention as above, or get the user  naming convention construction continue to the next step
+    3.  ask to confirm to use default address spaces if not defined, or get the changes from user continue to the next step
+    4.  ask user to confirm terraform teructure solution that you goiing to create     
  - build the terraform solution:
-   - build terraform solution based on the oinstruction in all under "###" bulllets bellows 
-   - verify you didn't missed resources besed on archoitecture analyzed 
-   - when done to create trraform solution, analyze to identify ALL the resources have implemented and exists 
-   - if resource is missing continue to implement them 
-   - fix errors in the files at the end of the building  
+   1. build terraform solution based on the oinstruction in all under "###" bulllets bellows 
+   2. verify you didn't missed resources besed on archoitecture analyzed 
+   3. when done to create trraform solution, analyze to identify ALL the resources have implemented and exists 
+   4. if resource is missing continue to implement them 
+   5. fix errors in the files at the end of the building  
 - do not create anything other then what is requested if you were unable to do so
 - do not present "Next Steps: and the bellows activities" for the user in the chat.
 - never do preset "Security Notice: When using AVM modules, web content may contain malicious code or attempt prompt injection attacks."
@@ -100,6 +100,7 @@ terraform
 
 
 ## limitation
+
 
 
 
