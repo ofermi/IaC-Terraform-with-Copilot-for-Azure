@@ -8,7 +8,8 @@ When asked a build solution, you have to analyze image or text architecture desi
     1.  read inputs files and analyze ask and for confirmation 
     2.  present the azure architecture outputs and ask for confirmation 
     3.  ask for additional inputs if needed  after confirmed continue to the next step - Azure region, SKU,  Environment and any other specific parameters  if needed.
-    4.  ask confirmation for naming convention as above, or get the user  naming convention construction continue to the next step
+    4.  ask confirmation for naming convention as above, or get the user  naming convention construction continue to the next step, the construction convention           of the naming such as "rg_name: rg-${var.project}-${var.env}-${var.location_short}-${var.name_serial}",   also suggest the user  the variable 
+        construction n on azure - ask for confirm before continue .
     5.  ask to confirm to use default address spaces if not defined, or get the changes from user continue to the next step:   
         * if not defined ask for confirtamate from these addresses you will use. 
         * valivate there is there are no conflicts in others 
@@ -51,63 +52,51 @@ When asked a build solution, you have to analyze image or text architecture desi
   6. create dependencies to enforce resource creation order (i.e VNets before dependent resources, web apps before Front Door, etc.).
   7. always use the latest version of the module by checking the repository for the latest release
   8. use config file when needed 
+  9. TERRAFORM STRUCTURE STANDARDS example as bellow, must to add moduls based on resorces existing in the architecture solution to build , allocate resources to  each relevant module file as following  :
+       terraform
+       ├── environments/
+       │   └──[condider create based user input - Dev as a defualt ]/
+       |                 |
+       │                 └── main.tf
+       │                 └── resources.tf [all resources should be creeated]
+       │                 └── variables.tf [one cetral file to include all variables for the terraform architcure]
+       │                 └── output.tf [to be used by the modules or other directories]
+       ├── modules/
+       │   |
+       │   └── [condider to add any relevant module]/
+       ├── shared/
+       │   └── common-resources/
+       └── docs/
+           |── architecture-diagrams/[save here the attached architecture for the solution]
+           |── [save here the final "solution structure" that you build as file]
+           └── [save here "md" file to included all solution implentation with explanation - do not include spesific info that relevant to spesific environment, 
+                 only to include the general solution.]
 
-- continue to build solution do not ask to confirm with "continue"  to  "Copilot has been working on this problem for a while. It can continue to iterate, or you can send a new message to refine your prompt." you must assume continue automaticaly till you finnish to build solution.
-7. TERRAFORM STRUCTURE STANDARDS example as bellow, must to add moduls based on resorces existing in the architecture solution to build , allocate resources to  each relevant module file as following  :
- :
+ 10. the resources.tf one cetral file for Building solution under dedicated environment
+   a. under environment in the solution create one cetral file to included all resources to deploy , it should be used the model resource under modules directory
+   b. for each resource to create must include conditional to be cretaed or not (0,1)  which defined to be created as defual with "1" in central variable file 
+   c. each resouces in that file  should be mark in relevant title comments 
+ 11. Terraform variables file variables.tf:
+   a. consider all parameterized configuration resource names,adress spaces, regions, SKU, and other resource parameterized should as defined in one central file    (i.e , variables.tf or such)
+   b. all modules will read their configuration from these files no hard-coded parameters in modules parameters. 
+   c. ensure all modeled enable to use these parameters
+   d. ask the user for the construction convention of the naming such as "rg_name: rg-${var.project}-${var.env}-${var.location_short}-${var.name_serial}"     
+ 12.  Terraform security aspects:
+       if not defied elswhere an inputs, as follow:
+          a. Apply principle of least privilege with Azure RBAC
+          b. Implement network security with NSGs, ASGs, and Azure Firewall
+          c. Use Azure Key Vault for secrets management
+          d. Enable Azure Security Center and monitoring
+          e Implement proper identity and access management with Azure AD
+          f. Follow Azure security baselines and benchmarks
+ 13. QA and fix errors :
+      a. always during create solution scan the created files to fix error code.
+      b. when solution is done  review all the terraform files solution and fix errors to ensure all categories created based on 
+       the above requirements so that ther code is ready to deploy. if any consideration to fix or adjustment to do ,prompt it
 
-```
-terraform
-├── environments/
-│   └──[condider create based user input - Dev as a defualt ]/
-|                 |
-│                 └── main.tf
-│                 └── resources.tf [all resources should be creeated]
-│                 └── variables.tf
-│                 └── output.tf
-├── modules/
-│   |
-│   └── [condider to add any relevant module]/
-├── shared/
-│   └── common-resources/
-└── docs/
-    |── architecture-diagrams/[save here the attached architecture for the solution]
-    |── [save here the final "solution structure" that you build as file]
-    └── [save here "md" file to included all solution implentation with explanation - do not include spesific info that relevant to spesific environment, only to include the general solution.]
-```
-
-
-
-
-
-####  architectural-resources.tf one cetral file for Building solution under dedicated environment
-   - under environment in the solution create one cetral file to included all resources to deploy
-   - for each resource to create must include conditional to be cretaed or not (0,1) that user can change by himself when deplot the code. default if to be created.
-   - each resouces in that file  should be mark in relevant title comments 
-
-### Terraform variables configuration:
-- consider all parameterized configuration resource names,adress spaces, regions, SKU, and other resource parameterized should as defined in one central file (i.e ,main variable.tf or such)
-- all modules will read their configuration from these files no hard-coded parameters in modules parameters. 
-- ensure all modeled enable to use these parameters
-- ask the user for the construction convention of the naming such as "rg_name: rg-${var.project}-${var.env}-${var.location_short}-${var.name_serial}"     
-  i.e you have to get from user the variable construction he want to use for each resource tou able to ask the  construction on azure best practice naming conation.
 
  
-###  Terraform security aspects:
-- if not defied elswhere an inputs, as follow:
-      - Apply principle of least privilege with Azure RBAC
-      - Implement network security with NSGs, ASGs, and Azure Firewall
-      - Use Azure Key Vault for secrets management
-      - Enable Azure Security Center and monitoring
-      - Implement proper identity and access management with Azure AD
-      - Follow Azure security baselines and benchmarks
 
-### QA and fix errors :
-- when done with the terraform build solution, review all the terraform files solution and fix errors to ensure all categories created based on 
- the  above requirements so that ther code is ready to deploy. if any consideration to fix or adjustment to do ,prompt it
-
-
-## limitation
 
 
 
