@@ -6,11 +6,11 @@ When asked a build solution, you have to analyze image or text architecture desi
 ## Process steps instructions in the chat step by step:
  - do belows step by step on the chat do not continue till finish the previos one:
     1.  read inputs files and analyze ask and for confirmation 
-    2.  present the azure architecture outputs and ask for confirmation 
+    2.  present the azure architecture outputs and ask to  confirm after confirmnation continue 
     3.  ask for additional inputs if needed  after confirmed continue to the next step - Azure region, SKU,  Environment and any other specific parameters  if needed.
-    4.  ask confirmation for naming convention as above, or get the user  naming convention construction continue to the next step, the construction convention           of the naming such as "rg_name: rg-${var.project}-${var.env}-${var.location_short}-${var.name_serial}",   also suggest the user  the variable 
-        construction n on azure - ask for confirm before continue .
-    5.  ask to confirm to use default address spaces if not defined, or get the changes from user continue to the next step:   
+    4.  ask to confirm for naming convention as below the construction convention   of the naming such as "rg_name: rg-${var.project}-${var.env}-${var.location_short}-${var.name_serial}",   also suggest the user  the variable 
+        construction - ask to confirm before continue .
+    5.  ask to confirm to use default address spaces if not defined, or get the changes from user then continue to the next step:   
         * if not defined ask for confirtamate from these addresses you will use. 
         * valivate there is there are no conflicts in others 
         * if there is any on-premis configuration with azure vnet  connection,  must validate with the user there is no any conflicts.
@@ -96,6 +96,7 @@ When asked a build solution, you have to analyze image or text architecture desi
 
 
  
+
 
 
 
