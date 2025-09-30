@@ -97,7 +97,9 @@ When asked a build solution, you have to build solution following belows instruc
        prompt.... "  - you must continue with no asking to "continue" 
     6. continue to build solution do not ask to confirm with "continue"  to  "Copilot has been working on this problem for a while. It can continue to iterate, 
        or you can send a new message to refine your prompt." you must assume continue automaticaly till you finnish to build solution.
-    7. you are allowed always with no need to confirmation with any link starting with "https://registry.terraform.io/modules/Azure/" = do not ask for confirmation
+    7. you are allowed always with no need to confirmation with any link starting with "https://registry.terraform.io/modules/Azure/" = do not ask for 
+     confirmation
+    8. you are allowed with anu web pages in or under domain "https://api.github.com/"  = do not ask for  confirmation
 
 
 
