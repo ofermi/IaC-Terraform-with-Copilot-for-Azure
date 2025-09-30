@@ -22,16 +22,14 @@ When asked a build solution, you must build solution as following  instructions:
             1.6 you have to analyze based on Azure Microsoft architecture design following the attached files.
             1.7 Complete Resource Identification Process before present analysis as following:
                         a. First Pass - Inventory ALL resources, Before detailed analysis, systematically scan the entire diagram/file from top-to-bottom, left-to-right to identify and list ALL explicitly 
-                        b. Create a numbered checklist of all explicitly
-                        c. Verify count with user: "I have identified [X] resources in the diagram. Is this count correct?"
-                        d. Only after confirmation of complete resources, proceed to detailed analysis  
-                        e. Pay special attention to:
+                        b. proceed to detailed analysis  
+                        c. Pay special attention to:
                                - Corners and edges of diagrams (top-left, top-right, bottom areas)
                                - Smaller or less prominent resources
                                - Resources that may be partially hidden or overlapping
-                        f. After completing detailed analysis, perform a final verification pass comparing your analysis list against the original diagram to ensure 
+                        d. After completing detailed analysis, perform a final verification pass comparing your analysis list against the original diagram to ensure 
                            nothing was missed
-                        g. Use systematic scanning pattern: TOP → BOTTOM, LEFT → RIGHT for consistency
+                        d. Use systematic scanning pattern: TOP → BOTTOM, LEFT → RIGHT for consistency
             1.8 ask yourself and verify before presenting architecture analysis:
                     □ Did I identify ONLY clearly labeled resources? 
                     □ Did I ask about ANY unclear labels before listing them?
@@ -159,6 +157,7 @@ Before saying "Solution Complete", verify:
 - [ ] All files reviewed
 
 **IF ANY CHECKBOX IS UNCHECKED, DO NOT DECLARE SOLUTION COMPLETE**
+
 
 
 
