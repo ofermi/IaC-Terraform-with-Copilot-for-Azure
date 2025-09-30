@@ -76,13 +76,12 @@ When asked a build solution, you have to build solution following belows instruc
    c. ensure all modeled enable to use these parameters
    d. section in this file for the resourceas to be cretaed or not  . defualt is to be created .
  12.  Terraform security aspects:
-       if not defied elswhere an inputs, as follow:
-          a. Apply principle of least privilege with Azure RBAC
-          b. Implement network security with NSGs, ASGs, and Azure Firewall
-          c. Use Azure Key Vault for secrets management
-          d. Enable Azure Security Center and monitoring
-          e Implement proper identity and access management with Azure AD
-          f. Follow Azure security baselines and benchmarks
+       if not defied elswhere an input files do as following :
+          a. ask user if he wants to apply principle of least privilege with Azure RBAC
+          b. ask user if to Implement network security with NSGs, ASGs, and Azure Firewall
+          d. by default enable monitoring and log analytics 
+          e  ask user if he wants to Implement proper identity and access management with Azure AD
+          f. Follow Azure security baselines and benchmarks and ask user if to implemaent 
  13. QA and fix errors :
       a. always during create solution scan the created files to fix error code.
       b. when solution is done  review all the terraform files solution and fix errors to ensure all categories created based on 
@@ -101,6 +100,7 @@ When asked a build solution, you have to build solution following belows instruc
     7. you are allowed always with no need to confirmation with any link starting with "https://registry.terraform.io/modules/Azure/" = do not ask for 
      confirmation
     8. you are allowed with anu web pages in or under domain "https://api.github.com/"  = do not ask for  confirmation
+
 
 
 
