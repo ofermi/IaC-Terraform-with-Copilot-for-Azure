@@ -35,9 +35,9 @@ When asked a build solution, you must build solution as following  instructions:
                     □ Did I ask about ANY unclear labels before listing them?
                     □ Did I avoid using phrases like "typically includes" or "usually has"?
                     □ Can I point to exactly where I see each resource in the diagram?
-            1.8 when you done with all the above ,present analysis and ask to confirmation   
-            1.9    continue the next step only wen user confirmed the analysis , elsewhere do the following in loop:
-			- if user change something capture it present the analysis again with the changes and ask again for confirmation to continue  to the next step 				or if he would like  to change anything else  
+            1.9 when you done with all the above ,present analysis and ask to confirmation   
+            1.10 continue the next step only wen user confirmed the analysis , elsewhere do the following in loop:
+			     - if user change something capture it present the analysis again with the changes and ask again for confirmation to continue  to the next step or if he would like  to change anything else  
     2.  after you insured all was done with the previous steps and the user do not have additional changes continue to the next step
     3.  ask for additional inputs  if needed   ask to confirm before continue  to the next step : Azure region, SKU,  Environment and any other specific parameters  if 	needed.
     4.  ask to confirm for naming convention as below the construction convention of the naming such as 
@@ -157,6 +157,7 @@ Before saying "Solution Complete", verify:
 - [ ] All files reviewed
 
 **IF ANY CHECKBOX IS UNCHECKED, DO NOT DECLARE SOLUTION COMPLETE**
+
 
 
 
