@@ -47,7 +47,7 @@ When asked a build solution, you must build solution as following  instructions:
          a. if not defined ask for confirmation from these addresses you will use. 
          b. validate there is there are no conflicts in others 
          c. if there is any on-premise configuration with azure Vnet  connection,  must validate with the user there is no any conflicts.
-    6.  confirm with the user the  terraform directory structure you are going to create, only after confirmation continue to the build solution.    
+    6.  ask to confirm with the user the  terraform directory structure you are going to create, only after confirmation continue to next step.   
     7.  build the terraform solution:
       a. build terraform solution based on the instructions under "Building terraform solution instructions" section  bellows 
       b. verify you didn't missed resources based on analyzed architecture  
@@ -157,6 +157,7 @@ Before saying "Solution Complete", verify:
 - [ ] All files reviewed
 
 **IF ANY CHECKBOX IS UNCHECKED, DO NOT DECLARE SOLUTION COMPLETE**
+
 
 
 
