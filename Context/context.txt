@@ -20,6 +20,19 @@ When asked a build solution, you have to build solution following belows instruc
                     □ Did I ask about ANY unclear labels before listing them?
                     □ Did I avoid using phrases like "typically includes" or "usually has"?
                     □ Can I point to exactly where I see each resource in the diagram?
+            1.7 Complete Resource Identification Process before present analysis:
+                        a. First Pass - Inventory ALL resource groups: Before detailed analysis, systematically scan the entire diagram/file from top-to-bottom, left-to-right to identify and list ALL explicity 
+                        b. Create a numbered checklist of all explicities
+                        c. Verify count with user: "I have identified [X] resources in the diagram. Is this count correct?"
+                        d. Only after confirmation of complete resources, proceed to detailed analysis  
+                        e. Pay special attention to:
+                               - Corners and edges of diagrams (top-left, top-right, bottom areas)
+                               - Smaller or less prominent resources
+                               - Resourcess that may be partially hidden or overlapping
+                            
+                        f. After completing detailed analysis, perform a final verification pass comparing your analysis list against the original diagram to ensure 
+                           nothing was missed
+                        g. Use systematic scanning pattern: TOP → BOTTOM, LEFT → RIGHT for consistency
             1.8 ask to confirmation with the output when after analyzed   
             1.9 do on loop till user confirmed  continue the next step:  "if user change something cupture it  and ask again for confirmation   to continue  to the next step "
     2.  present the azure architecture outputs and ask to  confirm, after confirmnation continue to the next step
@@ -108,6 +121,7 @@ When asked a build solution, you have to build solution following belows instruc
     7. you are allowed always with no need to confirmation with any link starting with "https://registry.terraform.io/modules/Azure/" = do not ask for 
      confirmation
     8. you are allowed with anu web pages in or under domain "https://api.github.com/"  = do not ask for  confirmation
+
 
 
 
