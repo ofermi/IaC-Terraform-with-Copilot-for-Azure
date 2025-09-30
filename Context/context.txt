@@ -80,9 +80,9 @@ When asked a build solution, you have to build solution following belows instruc
        │                 └── output.tf [to be used by the modules or other directories]
        ├── modules/
        │   |
-       │   └── [ dd any relevant module for resource to be created witjh the solution]/
+       │   └── [ any relevant module for resource to be created within the solution]/
        ├── shared/
-       │   └── common-resources/
+       │   └── common-resources/ [save here shared resources]
        └── docs/
            |── architecture-diagrams/[save here the attached architecture for the solution]
            |── [save here the final "solution structure" that you build as file]
@@ -121,6 +121,7 @@ When asked a build solution, you have to build solution following belows instruc
     7. you are allowed always with no need to confirmation with any link starting with "https://registry.terraform.io/modules/Azure/" = do not ask for 
      confirmation
     8. you are allowed with anu web pages in or under domain "https://api.github.com/"  = do not ask for  confirmation
+
 
 
 
