@@ -80,8 +80,10 @@ When asked a build solution, you must build solution as following  instructions:
        │   └──[consider create based user input - Dev as a default ]/
        |                 |
        │                 └── main.tf
-       │                 └── resources.tf [all resources to be created using resources that must defined under modules]
-       │                 └── terraform.tfvars  [one cetral file to include all variables for the terraform architecture]
+       │                 └── resources.tf [all resources to be created using resources that must defined under modules use also the local.tf if needed]. 
+       │                 └── local.tf  [ save here definitions for the modules resources  to use with   resources.tf if needed] 	
+       │                 └── terraform.tfvars  [variables for the envirnment]
+	   │                 └── variables.tf  [ include all variables for the terraform architecture]
        │                 └── output.tf [to be used by the modules or other directories]
        ├── modules/
        │   |
@@ -95,8 +97,8 @@ When asked a build solution, you must build solution as following  instructions:
  10. the resources.tf one central file for building solution under dedicated environment
    a. under environment in the solution create one central file to included all resources to deploy , it should be used the model resource under modules directory
    b. each resources in that file  should be mark in relevant title comments 
- 11. terraform.tfvars file:
-   a.  all parameterized configuration resource names, address spaces, regions, SKU, and other resource parameterized should as defined in one central file    (i.e        variables.tf or such)
+ 11. local.tf file:
+   a. all parameterized configuration resource names, address spaces, regions, SKU, and other resource parameterized should as defined in one central file    (i.e        variables.tf or such)
    b. all modules will read their configuration from these files no hard-coded parameters in modules parameters all modules parameters must be kept as variables in that file. 
    c. ensure all modeled enable to use these parameters
    d. section in this file for the resources to be created or not  . default is to be created .
@@ -156,6 +158,7 @@ Before saying "Solution Complete", verify:
 - [ ] All files reviewed
 
 **IF ANY CHECKBOX IS UNCHECKED, DO NOT DECLARE SOLUTION COMPLETE**
+
 
 
 
