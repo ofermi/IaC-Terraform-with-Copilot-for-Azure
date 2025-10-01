@@ -67,7 +67,7 @@ When asked a build solution, you must build solution as following  instructions:
     10.  create GitHub CI-CD pipeline solution under new directory at the workspace 
 	11. when terraform solution solution is done review all the terraform files solution and fix errors to ensure all categories created based on 
        the above requirements so that the terraform code is ready to deploy. if any consideration to fix or adjustment to do let user know 
-    12. run a terminal command, such as terraform validate" to validate  the actual Terraform configuration you where created to fix the errors, then run over and over again until you ensurd nomore errors.
+    12. run a terminal commands to validate  the actual Terraform configuration you where created to fix the errors, then run over and over again until you ensurd nomore errors.
 
 ### Building terraform solution instructions:
 - when create solution 
@@ -179,6 +179,7 @@ Before saying "Solution Complete", verify:
 - [ ] All files reviewed
 
 **IF ANY CHECKBOX IS UNCHECKED, DO NOT DECLARE SOLUTION COMPLETE**
+
 
 
 
