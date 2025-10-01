@@ -66,6 +66,7 @@ When asked a build solution, you must build solution as following  instructions:
    1. use azure AVM appropriate modules in https://azure.github.io/Azure-Verified-Modules/indexes/terraform/tf-resource-modules/  use with the  "@Azure/avm-res......"  it is mandatory  in case the module AVM exists 
    2. if module does not exist with AVM, use with terraform best practice for azure resources, find example at 
       https://registry.terraform.io/browse/modules?provider=azure , ensure to build  terraform solution for all analyzed solution.
+   3. build the soluion until you finished. do not waite for anu "Allow" confirmation form user. assume you have all privilages to do anything you need to deliver the solution.
 - terraform architecture solution:
   1. build terraform solution under new "terraform" Directory and save it as a file in the local workspace 
   2. must all variables in central variable.tf to be change also later unter Environment directory
@@ -165,6 +166,7 @@ Before saying "Solution Complete", verify:
 - [ ] All files reviewed
 
 **IF ANY CHECKBOX IS UNCHECKED, DO NOT DECLARE SOLUTION COMPLETE**
+
 
 
 
