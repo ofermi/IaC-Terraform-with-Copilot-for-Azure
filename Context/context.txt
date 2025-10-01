@@ -89,7 +89,7 @@ When asked a build solution, you must build solution as following  instructions:
        │                 └── output.tf [to be used by the modules or other directories]
        ├── modules/
        │   |
-       │   └── [ any relevant module for resource to be created within the solution]/
+       │   └── [ to group modules solution by the same definition under revlevan directory. i.e "network" with all relevant modules.. ]/
        └── docs/
            |── architecture-diagrams/[save here the attached architecture for the solution]
            |── [save here the final "solution structure" that you build as file]
@@ -165,6 +165,7 @@ Before saying "Solution Complete", verify:
 - [ ] All files reviewed
 
 **IF ANY CHECKBOX IS UNCHECKED, DO NOT DECLARE SOLUTION COMPLETE**
+
 
 
 
