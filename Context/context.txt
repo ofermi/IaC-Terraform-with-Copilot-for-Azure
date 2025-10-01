@@ -13,6 +13,8 @@ When asked a build solution, you must build solution as following  instructions:
 4. **NEVER USE DEPRECATED VERSION** - Use only with undeprecated versions,  if depracated must to fix the code with undepractes version. 
 5. **VALIDATE BEFORE COMPLETION**: validate with terminal commands such as "terrform validate" command, the actual Terraform solution before completion with no errors or problems. 
 6. **ALLOW TERMINAL COMMANDS** you are allowed with any terminal command
+7. **AllOW ANYTHING BY DEFAUL** do not ask for a permissions bt deafual you allow to complete all you need do go or to search from chat or to command in the terminal. do not ask for 	
+	permissions just do it ! 
 
 ## Process steps instructions in the chat step by step:
     1.  analyze inputs files with  azure resources to define the azure landing zone configuration build with terraform, when start to analyze  must act as following:
@@ -23,7 +25,7 @@ When asked a build solution, you must build solution as following  instructions:
             1.5 If uncertain about ANY label or icon or text,  do not assume. you have to ask the user for unclear give also   references  where user can find it in the attached  files .
             1.6 you have to analyze based on Azure Microsoft architecture design following the attached files.
             1.7 Complete Resource Identification Process before present analysis as following:
-                        a. First Pass - Inventory ALL resources, Before detailed analysis, systematically scan the entire diagram/file from top-to-bottom, left-to-right to identify and list ALL explicitly 
+                        a. First Pass - Inventory ALL resources, Before detailed analysis, systematically scan the entire diagram/file from top-to-bottom, left-to-right to identify and                              list ALL explicitly 
                         b. proceed to detailed analysis  
                         c. Pay special attention to:
                                - Corners and edges of diagrams (top-left, top-right, bottom areas)
@@ -39,7 +41,7 @@ When asked a build solution, you must build solution as following  instructions:
                     □ Can I point to exactly where I see each resource in the diagram?
             1.9 when you done with all the above ,present analysis and ask to confirmation   
             1.10 continue the next step only wen user confirmed the analysis , elsewhere do the following in loop:
-			     - if user change something, capture it, present the analysis again with the changes, and ask again for confirmation to continue  to the next step or if he would like  to change anything else  
+			     - if user change something, capture it, present the analysis again with the changes, and ask again for confirmation to continue  to the next step or if he would like  to                    change anything else  
     2.  after you insured all was done with the previous steps and the user do not have additional changes continue to the next step
     3.  ask for additional inputs  if needed   ask to confirm before continue  to the next step : Azure region, SKU,  Environment and any other specific parameters  if 	needed.
     4.  ask to confirm for naming convention as below the construction convention of the naming such as 
@@ -49,18 +51,24 @@ When asked a build solution, you must build solution as following  instructions:
          a. if not defined ask for confirmation from these addresses you will use. 
          b. validate there is there are no conflicts in others 
          c. if there is any on-premise configuration with azure Vnet  connection,  must validate with the user there is no any conflicts.
-    6.  ask to confirm with the user the  terraform directory structure you are going to create, only after confirmation continue to next step.   
-    7.  build the terraform solution:
+     6.  if not defied elsewher in the input files , ask for  security aspects   following :
+          a. if to apply principle of least privilege with Azure RBAC (by default disabled)
+          b. if to Implement network security with NSGs, ASGs, and Azure Firewall (by default disabled)
+          d. by default enable monitoring and log analytics 
+          e  if Implement proper identity and access management with Azure AD (by default enabled)
+          f. Follow Azure security baselines and benchmarks and ask user if to implement  (by default disabled)
+    7.  ask to confirm with the user the  terraform directory structure you are going to create, only after confirmation continue to next step.   
+    8.  build the terraform solution:
       a. build terraform solution based on the instructions under "Building terraform solution instructions" section  bellows 
       b. verify you didn't missed resources based on analyzed architecture  
       c. when done to create terraform solution, analyze to identify ALL the resources have implemented and exists 
-      d. verify at he end if resources are missing  based on the analyze architecture and continue to implement them 
+      d. verify at the end if resources are missing  based on the analyze architecture and continue to implement them 
       e. always analyze your terraform solution to fix errors in the files  
-    8.  preset at the to the user the identified architecture configuration (resources, network, security, monitoring, etc..)
-    9.  create GitHub CI-CD pipeline solution under new directory at the workspace 
-	10. when terraform solution solution is done review all the terraform files solution and fix errors to ensure all categories created based on 
+    9.  preset at the to the user the identified architecture configuration (resources, network, security, monitoring, etc..)
+    10.  create GitHub CI-CD pipeline solution under new directory at the workspace 
+	11. when terraform solution solution is done review all the terraform files solution and fix errors to ensure all categories created based on 
        the above requirements so that the terraform code is ready to deploy. if any consideration to fix or adjustment to do let user know 
-	11. run a terminal command to validate the actual Terraform configuration you where created to fix the errors, then run over and over again until you ensurd nomore errors.
+    12. run a terminal command to validate the actual Terraform configuration you where created to fix the errors, then run over and over again until you ensurd nomore errors.
 
 ### Building terraform solution instructions:
 - when create solution 
@@ -107,13 +115,7 @@ When asked a build solution, you must build solution as following  instructions:
    c. no hard-coded parameters settings in modules  all modules read there settings from that file . 
    d. ensure all modeled enable to use these with local.tf file.
    d. centrelize section in that file with "Feature Flags" ast the header of the file, if to create teh resource- by defual is it 'true".
- 12.  Terraform security aspects:
-       if not defied elsewhere in the input files, ask user as following :
-          a. if to apply principle of least privilege with Azure RBAC (by default disabled)
-          b. if to Implement network security with NSGs, ASGs, and Azure Firewall (by default disabled)
-          d. by default enable monitoring and log analytics 
-          e  if Implement proper identity and access management with Azure AD (by default enabled)
-          f. Follow Azure security baselines and benchmarks and ask user if to implement  (by default disabled)
+
  13. QA and fix errors :
       a. always during create solution scan the created files to fix error code.
       b. when solution is done  review all the terraform files solution and fix errors to ensure all categories created based on 
@@ -167,6 +169,7 @@ Before saying "Solution Complete", verify:
 - [ ] All files reviewed
 
 **IF ANY CHECKBOX IS UNCHECKED, DO NOT DECLARE SOLUTION COMPLETE**
+
 
 
 
