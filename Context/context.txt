@@ -10,6 +10,7 @@ When asked a build solution, you must build solution as following  instructions:
 1. **FIX ALL ERRORS**: Use get_errors tool and fix everything
 2. **NEVER SKIP QA**: Error scanning is MANDATORY, not optional
 3. **BE THOROUGH**: Better to spend extra time than deliver broken code
+4. **NEVER USE DEPRECATED VERSION** - Use only with undeprecated versions,  if depracated must to fix the code with undepractes version. 
 4. **VALIDATE BEFORE COMPLETION**: validate with terminal commands such as "terrform validate" command, the actual Terraform solution before completion no errors or problems.  
 
 ## Process steps instructions in the chat step by step:
@@ -164,6 +165,7 @@ Before saying "Solution Complete", verify:
 - [ ] All files reviewed
 
 **IF ANY CHECKBOX IS UNCHECKED, DO NOT DECLARE SOLUTION COMPLETE**
+
 
 
 
