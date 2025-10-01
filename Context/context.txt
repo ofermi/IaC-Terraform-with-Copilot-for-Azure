@@ -126,7 +126,8 @@ When asked a build solution, you must build solution as following  instructions:
        or you can send a new message to refine your prompt." you must assume continue automatically till you finish to build solution.
     7. you are allowed always with no need to confirmation with any link starting with "https://registry.terraform.io/modules/Azure/" = do not ask for 
      confirmation
-    8. you are allowed with anu web pages in or under domain "https://api.github.com/"  = do not ask for  confirmation
+    8. you are allowed with ant web pages in or under domain "https://api.github.com/"  = do not ask for  confirmation
+    9. you are allowed with any terminal order "Remove-Item -Recurse -Force .terraform,.terraform.lock.hcl -ErrorAction SilentlyContinue; terraform init -backend=false"
 
 ## CRITICAL - MANDATORY FINAL STEPS (DO NOT SKIP):
 
@@ -159,6 +160,7 @@ Before saying "Solution Complete", verify:
 - [ ] All files reviewed
 
 **IF ANY CHECKBOX IS UNCHECKED, DO NOT DECLARE SOLUTION COMPLETE**
+
 
 
 
