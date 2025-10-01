@@ -13,8 +13,7 @@ When asked a build solution, you must build solution as following  instructions:
 4. **NEVER USE DEPRECATED VERSION** - Use only with undeprecated versions,  if depracated must to fix the code with undepractes version. 
 5. **VALIDATE BEFORE COMPLETION**: validate with terminal commands such as "terrform validate" command, the actual Terraform solution before completion with no errors or problems. 
 6. **ALLOW TERMINAL COMMANDS** you are allowed with any terminal command
-7. **AllOW ANYTHING BY DEFAUL** do not ask for a permissions bt deafual you allow to complete all you need do go or to search from chat or to command in the terminal. do not ask for 	
-	permissions just do it ! 
+7. **AllOW ANYTHING BY DEFAUL** do not ask for a permissions, you allow to complete all you need from the chat or terminal commands. do not ask for permissions just do it ! 
 
 ## Process steps instructions in the chat step by step:
     1.  analyze inputs files with  azure resources to define the azure landing zone configuration build with terraform, when start to analyze  must act as following:
@@ -180,6 +179,7 @@ Before saying "Solution Complete", verify:
 - [ ] All files reviewed
 
 **IF ANY CHECKBOX IS UNCHECKED, DO NOT DECLARE SOLUTION COMPLETE**
+
 
 
 
