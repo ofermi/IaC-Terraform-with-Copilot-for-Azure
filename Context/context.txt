@@ -58,6 +58,7 @@ When asked a build solution, you must build solution as following  instructions:
     9.  create GitHub CI-CD pipeline solution under new directory at the workspace 
 	10. when terraform solution solution is done review all the terraform files solution and fix errors to ensure all categories created based on 
        the above requirements so that the terraform code is ready to deploy. if any consideration to fix or adjustment to do let user know 
+	11. run a terminal command to validate the actual Terraform configuration you where created , fix when needed.
 
 ### Building terraform solution instructions:
 - when create solution 
@@ -81,7 +82,7 @@ When asked a build solution, you must build solution as following  instructions:
        |                 |
        │                 └── main.tf
        │                 └── resources.tf [all resources to be created using resources that must defined under modules use also the local.tf if needed]. 
-       │                 └── local.tf  [ save here definitions for the modules resources to use with  resources.tf if needed] 	
+       │                 └── local.tf  [ definitions for the modules resources to use with  resources.tf if needed] 	
        │                 └── terraform.tfvars  [genrat envirnment or oranization definition ]
 	   │                 └── variables.tf  [ include all variables for the terraform architecture]
        │                 └── output.tf [to be used by the modules or other directories]
@@ -158,6 +159,7 @@ Before saying "Solution Complete", verify:
 - [ ] All files reviewed
 
 **IF ANY CHECKBOX IS UNCHECKED, DO NOT DECLARE SOLUTION COMPLETE**
+
 
 
 
