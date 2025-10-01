@@ -86,7 +86,7 @@ When asked a build solution, you must build solution as following  instructions:
   7. always use the latest version of the module by checking the repository for the latest release
   8. use config file when needed 
   9. use this terraform structure, allocate resources to each relevant module file, as following  :
-
+    9.1. terraform structure:
        terraform
        ├── environments/
        │   └──[consider create based user input - Dev as a default ]/
@@ -106,15 +106,21 @@ When asked a build solution, you must build solution as following  instructions:
            └── [save here "md" file to included all solution implantation with explanation - do not include specific info that relevant to specific environment, 
                  only to include the general solution.]
 
- 10. the resources.tf one central file for building solution under dedicated environment
-   a. under environment in the solution create one central file to included all resources to deploy , it should be used the model resource under modules directory
-   b. each resources in that file  should be mark in relevant title comments 
- 11. local.tf file:
-   a. all settings configuration such as: resource names, address spaces, regions, SKU, and other resource settings must as defined in that central file , variables.tf not to includes "defual" settings , that setting is mandatory to creats the solution with the local.tf central file as following:
-   b. all modules  read their  configuratio settings from that file
-   c. no hard-coded parameters settings in modules  all modules read there settings from that file . 
-   d. ensure all modeled enable to use these with local.tf file.
-   d. centrelize section in that file with "Feature Flags" ast the header of the file, if to create teh resource- by defual is it 'true".
+     9.2. guidence for that terraform structure:   
+         9.2.1  resources.tf one central file for building solution under dedicated environment:
+   		 	a. to included all resources to deploy , it should used with th the moduls resource under modules directory
+   			b. each resources in that file  should be mark in relevant title comments 
+		 9.2.2 local.tf file under environment directory:
+   			a. all settings configuration such as: resource names, address spaces, regions, SKU, and other resource settings must as defined in that central file ,
+  			b. all modules  read their  configuratio settings from that file
+			c. centrelize section in that file with "Feature Flags" ast the header of the file, if to create teh resource- by defual is it 'true".
+  	9.3 modules solution:	   
+     		a. no hard-coded parameters or settings or configuration  all modules to use and read there settings from that local.tf file under environment directory  . 
+   			d. ensure all modules enable to use these with local.tf file under environment directory.
+ 
+
+ 	9.3 variables.tf 
+			a. not to includes "defual" settings , that setting is mandatory to set with the solution with the local.tf central file  
 
  13. QA and fix errors :
       a. always during create solution scan the created files to fix error code.
@@ -169,6 +175,7 @@ Before saying "Solution Complete", verify:
 - [ ] All files reviewed
 
 **IF ANY CHECKBOX IS UNCHECKED, DO NOT DECLARE SOLUTION COMPLETE**
+
 
 
 
