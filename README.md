@@ -1,250 +1,316 @@
-# Azure Hub-Spoke Network Architecture - Terraform Solution
+# Azure Landing Zone - Terraform Solution
 
-[![Terraform](https://img.shields.io/badge/Terraform-1.9+-623CE4?logo=terraform)](https://www.terraform.io/)
-[![Azure](https://img.shields.io/badge/Azure-Cloud-0078D4?logo=microsoft-azure)](https://azure.microsoft.com/)
+![Azure](https://img.shields.io/badge/Azure-0078D4?style=for-the-badge&logo=microsoft-azure&logoColor=white)
+![Terraform](https://img.shields.io/badge/Terraform-7B42BC?style=for-the-badge&logo=terraform&logoColor=white)
 
-## 🏗️ Overview
+## Overview
 
-This repository contains a production-ready Terraform solution for deploying a comprehensive Azure Hub-Spoke network architecture with enterprise-grade security, monitoring, and governance capabilities.
+This repository contains a complete Terraform solution for deploying an Azure Landing Zone with a hub-spoke network architecture. The solution is production-ready, follows Azure best practices, and leverages Azure Verified Modules (AVM) wherever possible.
 
-## ✨ Features
+## Architecture
 
-- **Hub-Spoke Topology**: Centralized hub VNet with multiple spoke VNets for workload isolation
-- **Azure Verified Modules**: Leverages official AVM modules for reliability and best practices
-- **Private Connectivity**: Private Endpoints and Private DNS zones for secure PaaS access
-- **Secure Access**: Azure Bastion for RDP/SSH without public IP exposure
-- **Application Delivery**: Application Gateway with WAF capabilities
-- **API Management**: Internal APIM deployment for API governance
-- **Monitoring & Logging**: Centralized Log Analytics and Azure Monitor
-- **DNS Resolution**: Private DNS Resolver for hybrid scenarios
-- **CI/CD Ready**: GitHub Actions workflow for automated deployments
-- **Modular Design**: Reusable modules for easy customization
+### Hub-Spoke Topology
 
-## 📋 Architecture
+The solution implements a hub-spoke network architecture with:
+
+- **1 Hub VNet (10.0.0.0/16)**: Central connectivity and shared services
+  - Azure Firewall
+  - Application Gateway (WAF)
+  - Azure Bastion
+  - Log Analytics Workspace
+  - DNS Resolver
+
+- **6 Spoke VNets**: Isolated workload environments
+  - APIM Spoke (10.1.0.0/24): API Management
+  - Management Spoke (10.2.0.0/24): Management VMs
+  - Spoke 01 (10.3.0.0/24): Example workload
+  - Spoke 02 (10.4.0.0/24): Function App + SQL Database
+  - IaC Spoke (10.5.0.0/24): Terraform State + Agent VM
+  - DNS Spoke (10.6.0.0/24): DNS services
+
+### Key Features
+
+✅ **Hub-Spoke Network**: Centralized security and connectivity  
+✅ **Azure Firewall**: Network security and traffic inspection  
+✅ **Application Gateway**: Web application load balancing with WAF  
+✅ **Private Endpoints**: Secure access to PaaS services  
+✅ **Private DNS Zones**: DNS resolution for private endpoints  
+✅ **API Management**: Internal API gateway  
+✅ **Azure Bastion**: Secure VM access without public IPs  
+✅ **Log Analytics**: Centralized logging and monitoring  
+✅ **Function App**: Serverless compute with VNet integration  
+✅ **SQL Database**: Managed database with private connectivity  
+
+## Repository Structure
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                         Hub VNet                            │
-│  ┌──────────┐  ┌──────────────┐  ┌────────────────────┐   │
-│  │ Bastion  │  │ App Gateway  │  │  DNS Resolver      │   │
-│  └──────────┘  └──────────────┘  └────────────────────┘   │
-└────────┬────────────┬────────────────────┬──────────────────┘
-         │            │                    │
-    ┌────┴────┐  ┌────┴────┐         ┌────┴────┐
-    │ APM VNet│  │Spoke 01 │         │Spoke 02 │
-    │         │  │  VNet   │         │  VNet   │
-    │  APIM   │  │         │         │SQL+Func │
-    └─────────┘  └─────────┘         └─────────┘
+.
+├── .github/
+│   └── workflows/
+│       ├── terraform-cicd.yml        # CI/CD pipeline
+│       └── README.md                 # CI/CD documentation
+│
+├── terraform/
+│   ├── environments/
+│   │   └── dev/
+│   │       ├── main.tf               # Terraform & provider config
+│   │       ├── resources.tf          # Resource deployments
+│   │       ├── locals.tf             # Configuration & feature flags
+│   │       ├── variables.tf          # Variable definitions
+│   │       ├── terraform.tfvars      # Variable values
+│   │       └── outputs.tf            # Outputs
+│   │
+│   ├── modules/                      # Reusable Terraform modules
+│   │   ├── network/                  # Network modules
+│   │   ├── security/                 # Security modules
+│   │   ├── compute/                  # Compute modules
+│   │   ├── management/               # Management modules
+│   │   ├── data/                     # Data modules
+│   │   └── integration/              # Integration modules
+│   │
+│   └── docs/
+│       ├── architecture-diagrams/    # Architecture diagrams
+│       ├── solution-structure.md     # Structure documentation
+│       └── implementation-guide.md   # Deployment guide
+│
+├── context.txt                       # Project context
+└── README.md                         # This file
 ```
 
-For detailed architecture diagram, see [docs/architecture-diagrams/](terraform/docs/architecture-diagrams/)
+## Prerequisites
 
-## 🚀 Quick Start
+- **Azure Subscription**: Active subscription with Contributor access
+- **Azure CLI**: Version 2.50.0 or later
+- **Terraform**: Version 1.9.0 or later
+- **Git**: For version control
 
-### Prerequisites
+## Quick Start
 
-1. **Azure Subscription** with Contributor access
-2. **Terraform** >= 1.9.0 ([Download](https://www.terraform.io/downloads))
-3. **Azure CLI** ([Installation Guide](https://docs.microsoft.com/cli/azure/install-azure-cli))
-4. **Git** for cloning the repository
+### 1. Clone Repository
 
-### Installation
+```powershell
+cd c:\Users\ofermironi\Downloads\TF-Demo5
+```
 
-```bash
-# Clone the repository
-git clone <repository-url>
-cd TF-Demo1
+### 2. Authenticate to Azure
 
-# Navigate to environment
-cd terraform/environments/dev
+```powershell
+az login
+az account set --subscription "<your-subscription-id>"
+```
 
-# Set environment variables
-export TF_VAR_subscription_id="your-subscription-id"
-export TF_VAR_vm_admin_password="SecurePassword123!"
-export TF_VAR_sql_admin_password="SecurePassword123!"
+### 3. Review Configuration
 
-# Initialize Terraform
+Edit `terraform/environments/dev/terraform.tfvars`:
+- Update project name, environment, location
+- Review network address spaces
+- Customize tags
+
+### 4. Initialize Terraform
+
+```powershell
+cd terraform\environments\dev
 terraform init
+```
 
-# Review the plan
+### 5. Plan Deployment
+
+```powershell
 terraform plan
+```
 
-# Deploy infrastructure
+### 6. Deploy
+
+```powershell
 terraform apply
 ```
 
-## 📁 Repository Structure
+⏱️ **Estimated Time**: 45-60 minutes (API Management takes 30-45 min)
 
-```
-TF-Demo1/
-├── .github/
-│   └── workflows/          # GitHub Actions CI/CD pipelines
-├── terraform/
-│   ├── environments/
-│   │   └── dev/           # Development environment configuration
-│   ├── modules/           # Reusable Terraform modules
-│   └── docs/              # Documentation and architecture diagrams
-└── context.txt            # Project context and guidelines
-```
+## Configuration
 
-## 🔧 Configuration
+### Feature Flags
 
-### Key Configuration Files
-
-- **`terraform.tfvars`**: Environment-specific values (regions, sizes, address spaces)
-- **`variables.tf`**: Variable declarations with defaults
-- **`locals.tf`**: Centralized resource naming and configuration
-- **`resources.tf`**: Resource definitions and module calls
-
-### Customization
-
-Edit `terraform/environments/dev/terraform.tfvars`:
+Enable/disable resources in `locals.tf`:
 
 ```hcl
-# Update your subscription ID
-subscription_id = "your-subscription-id-here"
-
-# Modify network address spaces
-hub_vnet_address_space = ["10.0.0.0/16"]
-
-# Toggle features
-create_bastion             = true
-create_application_gateway = true
-create_api_management      = true
-
-# Adjust SKUs for cost optimization
-app_gateway_sku_name = "Standard_v2"
-vm_size              = "Standard_D2s_v3"
+locals {
+  create_azure_firewall      = true
+  create_application_gateway = true
+  create_api_management      = true
+  create_function_app        = true
+  create_sql_database        = true
+  # ... etc
+}
 ```
 
-## 📦 Deployed Resources
+### Network Customization
 
-| Resource Type | Count | Purpose |
-|--------------|-------|---------|
-| Resource Groups | 8 | Logical organization |
-| Virtual Networks | 8 | Network segmentation |
-| Subnets | 20+ | Workload isolation |
-| VNet Peerings | 10 | Hub-spoke connectivity |
-| Azure Bastion | 1 | Secure VM access |
-| Application Gateway | 1 | Load balancing & WAF |
-| API Management | 1 | API gateway |
-| Virtual Machines | 3 | Bastion hosts & agents |
-| SQL Database | 1 | Data storage |
-| Function App | 1 | Serverless compute |
-| Private Endpoints | 3+ | Secure PaaS access |
-| Private DNS Zones | 9 | Internal name resolution |
-| DNS Resolver | 1 | Hybrid DNS |
-| Log Analytics | 1 | Centralized logging |
-| Storage Account | 1 | Terraform state |
+Modify network address spaces in `terraform.tfvars`:
 
-## 🔐 Security Features
+```hcl
+hub_vnet_address_space = ["10.0.0.0/16"]
+spoke01_vnet_address_space = ["10.3.0.0/24"]
+# ... etc
+```
 
-- ✅ Network isolation via Hub-Spoke topology
-- ✅ Private Endpoints for PaaS services
-- ✅ No public IPs on backend resources
-- ✅ Azure Bastion for secure administration
-- ✅ Private DNS for internal resolution
-- ✅ Centralized monitoring and logging
-- ✅ VNet integration for Function Apps
-- ✅ Internal-only API Management
+### Resource Naming
 
-## 📊 Monitoring
+Naming convention is defined in `locals.tf`:
+```
+<resource-type>-<project>-<environment>-<location-short>-<purpose>
+```
 
-All resources are connected to a centralized Log Analytics Workspace with:
+Example: `rg-demo-dev-we-hub`
 
-- Azure Monitor diagnostics
-- Activity logging
-- Resource health monitoring
-- Custom alerting (configurable)
+## Azure Verified Modules
 
-## 💰 Cost Estimation
+This solution uses the following AVM modules:
 
-Approximate monthly costs (East US, Dev environment):
+- `Azure/avm-res-operationalinsights-workspace/azurerm` - Log Analytics
+- `Azure/avm-res-network-virtualnetwork/azurerm` - Virtual Network
+- `Azure/avm-res-network-azurefirewall/azurerm` - Azure Firewall
+- `Azure/avm-res-storage-storageaccount/azurerm` - Storage Account
+- `Azure/avm-res-sql-server/azurerm` - SQL Server
+- `Azure/avm-res-apimanagement-service/azurerm` - API Management
 
-| Resource | Estimated Cost |
-|----------|---------------|
-| Virtual Networks | Free |
-| Azure Bastion (Standard) | ~$140 |
-| Application Gateway (Standard_v2) | ~$150 |
-| API Management (Developer) | ~$50 |
-| Virtual Machines (3x D2s_v3) | ~$280 |
-| SQL Database (S0) | ~$15 |
-| Function App (Consumption) | Variable |
-| Storage & Misc | ~$10 |
-| **Total** | **~$645/month** |
+## CI/CD Pipeline
 
-> 💡 Costs can be optimized by adjusting SKUs and deallocating non-production VMs.
+GitHub Actions workflow provides:
 
-## 🔄 CI/CD Pipeline
+✅ **Terraform Validation**: Format check and syntax validation  
+✅ **Terraform Plan**: Automated planning on PRs with comment  
+✅ **Terraform Apply**: Automatic deployment on merge to main  
+✅ **Security Scanning**: Checkov integration for IaC security  
+✅ **Environment Protection**: Production approval gates  
 
-Automated deployment via GitHub Actions:
+See [.github/workflows/README.md](.github/workflows/README.md) for setup instructions.
 
-- **Pull Request**: Runs `terraform plan` and comments results
-- **Merge to Main**: Deploys infrastructure with approval
-- **Manual Trigger**: On-demand deployments
+## Documentation
 
-Setup instructions: [.github/workflows/README.md](.github/workflows/README.md)
-
-## 📚 Documentation
-
-- **[Implementation Guide](terraform/docs/implementation-guide.md)**: Detailed deployment instructions
-- **[Solution Structure](terraform/docs/solution-structure.md)**: Architecture and module documentation
+- **[Solution Structure](terraform/docs/solution-structure.md)**: Complete directory structure
+- **[Implementation Guide](terraform/docs/implementation-guide.md)**: Detailed deployment guide
 - **[CI/CD Setup](.github/workflows/README.md)**: GitHub Actions configuration
 
-## 🛠️ Modules
+## Network Traffic Flow
 
-All modules use Azure Verified Modules (AVM) where available:
+```
+User
+  ↓
+Application Gateway (Public IP)
+  ↓
+Azure Firewall (Inspection)
+  ↓
+API Management (Internal)
+  ↓
+Function App (VNet Integrated)
+  ↓
+SQL Database (Private Endpoint)
+```
 
-- `resource-group`: AVM Resource Group
-- `virtual-network`: AVM Virtual Network
-- `bastion`: AVM Bastion Host
-- `api-management`: AVM API Management
-- `virtual-machine`: AVM Compute VM
-- `storage-account`: AVM Storage Account
-- `sql-database`: AVM SQL Server
-- `log-analytics`: AVM Log Analytics
+## Security Features
 
-## 🤝 Contributing
+🔒 **Network Security**
+- All spoke traffic routed through Azure Firewall
+- Network Security Groups on all subnets
+- No public IPs on workload resources
 
-1. Create a feature branch
-2. Make your changes
-3. Test locally
+🔒 **Private Connectivity**
+- Private endpoints for PaaS services
+- Private DNS zones for name resolution
+- No public access to databases/storage
+
+🔒 **Identity & Access**
+- Azure Bastion for secure VM access
+- Service principal for Terraform deployment
+- RBAC at resource group level
+
+🔒 **Monitoring**
+- Centralized Log Analytics Workspace
+- Azure Monitor for alerts
+- Diagnostic settings on all resources
+
+## Cost Optimization
+
+Key cost drivers:
+- **API Management Developer SKU**: ~$50/month
+- **Azure Firewall**: ~$1.25/hour
+- **Application Gateway WAF_v2**: ~$0.45/hour
+- **Azure Bastion Standard**: ~$0.19/hour
+- **Virtual Machines**: Varies by size
+- **SQL Database S0**: ~$15/month
+
+**Total Estimated Cost (Dev)**: ~$700-900/month
+
+💡 **Tip**: Use feature flags in `locals.tf` to disable expensive resources during development.
+
+## Troubleshooting
+
+### Common Issues
+
+**API Management Timeout**
+- API Management takes 30-45 minutes to deploy
+- This is normal Azure behavior
+
+**VNet Peering Conflicts**
+- Ensure no overlapping address spaces
+- Check on-premises connectivity for conflicts
+
+**Private Endpoint DNS**
+- Verify Private DNS Zone links to VNets
+- Check DNS resolution from VMs
+
+### Debug Mode
+
+Enable Terraform debugging:
+```powershell
+$env:TF_LOG="DEBUG"
+terraform apply
+```
+
+## Cleanup
+
+Destroy all resources:
+
+```powershell
+terraform destroy
+```
+
+⚠️ **Warning**: This will delete all resources. Ensure you have backups.
+
+## Support & Contribution
+
+### Issues
+Report issues via GitHub Issues
+
+### Contributing
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
 4. Submit a pull request
-5. Wait for automated checks
-6. Get approval and merge
 
-## 📝 License
+## License
 
-This project is provided as-is for educational and production use.
+This project is licensed under the MIT License.
 
-## 🆘 Support
+## Resources
 
-For issues and questions:
+- [Azure Landing Zones](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/)
+- [Azure Verified Modules](https://azure.github.io/Azure-Verified-Modules/)
+- [Terraform Azure Provider](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs)
+- [Azure Architecture Center](https://learn.microsoft.com/azure/architecture/)
+- [Terraform Best Practices](https://www.terraform-best-practices.com/)
 
-- **Azure Documentation**: https://docs.microsoft.com/azure
-- **Terraform Registry**: https://registry.terraform.io
-- **Azure Verified Modules**: https://azure.github.io/Azure-Verified-Modules/
+## Authors
 
-## ⚠️ Important Notes
+Infrastructure Team
 
-1. **Replace Placeholder Values**: Update subscription ID in `terraform.tfvars`
-2. **Set Passwords**: Use environment variables for sensitive values
-3. **Review Costs**: Understand pricing before deployment
-4. **Backup State**: Ensure Terraform state backend is configured
-5. **Test First**: Deploy to dev environment before production
+## Acknowledgments
 
-## 🎯 Next Steps
-
-After deployment:
-
-1. ✅ Review deployed resources in Azure Portal
-2. ✅ Configure NSG rules as needed
-3. ✅ Set up custom DNS forwarding
-4. ✅ Configure Application Gateway backends
-5. ✅ Deploy applications to spoke VNets
-6. ✅ Set up custom monitoring alerts
-7. ✅ Configure backup policies
+- Azure Verified Modules team
+- HashiCorp Terraform team
+- Azure Cloud Adoption Framework team
 
 ---
 
-**Built with ❤️ using Terraform and Azure Verified Modules**
+**Built with ❤️ using Terraform and Azure**
