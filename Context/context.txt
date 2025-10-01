@@ -10,7 +10,7 @@ When asked a build solution, you must build solution as following  instructions:
 1. **FIX ALL ERRORS**: Use get_errors tool and fix everything
 2. **NEVER SKIP QA**: Error scanning is MANDATORY, not optional
 3. **BE THOROUGH**: Better to spend extra time than deliver broken code
-4. **VALIDATE BEFORE COMPLETION**: Always verify solution works
+4. **VALIDATE BEFORE COMPLETION**: validate with terminal commands such as "terrform validate" command, the actual Terraform solution before completion no errors or problems.  
 
 ## Process steps instructions in the chat step by step:
     1.  analyze inputs files with  azure resources to define the azure landing zone configuration build with terraform, when start to analyze  must act as following:
@@ -82,8 +82,8 @@ When asked a build solution, you must build solution as following  instructions:
        |                 |
        │                 └── main.tf
        │                 └── resources.tf [all resources to be created using resources that must defined under modules use also the local.tf if needed]. 
-       │                 └── local.tf  [ definitions for the modules resources to use with  resources.tf if needed] 	
-       │                 └── terraform.tfvars  [genrat envirnment or oranization definition ]
+       │                 └── local.tf  [ definitions settings for the modules resources to use with  resources.tf if needed] 	
+       │                 └── terraform.tfvars  [only to include "Project configuration" and "Tags" and "Network Address Spaces" ]
 	   │                 └── variables.tf  [ include all variables for the terraform architecture]
        │                 └── output.tf [to be used by the modules or other directories]
        ├── modules/
@@ -99,17 +99,18 @@ When asked a build solution, you must build solution as following  instructions:
    a. under environment in the solution create one central file to included all resources to deploy , it should be used the model resource under modules directory
    b. each resources in that file  should be mark in relevant title comments 
  11. local.tf file:
-   a. all parameterized configuration resource names, address spaces, regions, SKU, and other resource parameterized should as defined in one central file    (i.e        variables.tf or such)
-   b. all modules will read their configuration from these files no hard-coded parameters in modules parameters all modules parameters must be kept as variables in that file. 
-   c. ensure all modeled enable to use these parameters
-   d. section in this file for the resources to be created or not  . default is to be created .
+   a. all settings configuration such as: resource names, address spaces, regions, SKU, and other resource settings must as defined in that central file , variables.tf not to includes "defual" settings , that setting is mandatory to creats the solution with the local.tf central file as following:
+   b. all modules  read their  configuratio settings from that file
+   c. no hard-coded parameters settings in modules  all modules read there settings from that file . 
+   d. ensure all modeled enable to use these with local.tf file.
+   d. centrelize section in that file with "Feature Flags" ast the header of the file, if to create teh resource- by defual is it 'true".
  12.  Terraform security aspects:
-       if not defied elsewhere an input files do as following :
-          a. ask user if he wants to apply principle of least privilege with Azure RBAC
-          b. ask user if to Implement network security with NSGs, ASGs, and Azure Firewall
+       if not defied elsewhere in the input files, ask user as following :
+          a. if to apply principle of least privilege with Azure RBAC (by default disabled)
+          b. if to Implement network security with NSGs, ASGs, and Azure Firewall (by default disabled)
           d. by default enable monitoring and log analytics 
-          e  ask user if he wants to Implement proper identity and access management with Azure AD
-          f. Follow Azure security baselines and benchmarks and ask user if to implement 
+          e  if Implement proper identity and access management with Azure AD (by default enabled)
+          f. Follow Azure security baselines and benchmarks and ask user if to implement  (by default disabled)
  13. QA and fix errors :
       a. always during create solution scan the created files to fix error code.
       b. when solution is done  review all the terraform files solution and fix errors to ensure all categories created based on 
@@ -139,17 +140,17 @@ When asked a build solution, you must build solution as following  instructions:
 1. **RUN ERROR SCAN**: Execute `get_errors` tool to scan ALL files
 2. **FIX ALL ERRORS**: Fix every single error found - no exceptions
 3. **RE-SCAN**: Run `get_errors` again to verify all fixes
-4. **VALIDATE**: Ensure terraform validate would pass
-5. **DOCUMENT FIXES**: List all errors fixed in final summary
+4. **VALIDATE**: Ensure terraform validate would pass - run command  "terrform validate" in terminal to ansure no errors or problems.  
+5. **DOCUMENT FIXES**: List all errors and problems fixed in final summary
 
 ### ERROR FIXING RULES:
 
-- **NEVER** skip error fixing step
-- **NEVER** say "solution complete" before fixing all errors
+- **NEVER** skip error or problem fixing step
+- **NEVER** say "solution complete" before fixing all errors and problems
 - **ALWAYS** use get_errors tool at the end
-- **ALWAYS** fix 100% of errors found
+- **ALWAYS** fix 100% of errors and problems you found
 - **ALWAYS** re-scan after fixes
-- If errors remain after fixes, explain why and provide workarounds
+- If errors or problems remain after fixes, explain why and provide workarounds
 
 ### AUTOMATIC COMPLETION CHECKLIST:
 
@@ -157,12 +158,13 @@ Before saying "Solution Complete", verify:
 - [ ] All modules created
 - [ ] All resources implemented
 - [ ] get_errors executed
-- [ ] All errors fixed
-- [ ] Re-scan shows 0 errors (or documented exceptions)
+- [ ] All errors and problems fixed
+- [ ] Re-scan shows 0 errors or problems (or documented exceptions)
 - [ ] Solution is terraform validate ready
 - [ ] All files reviewed
 
 **IF ANY CHECKBOX IS UNCHECKED, DO NOT DECLARE SOLUTION COMPLETE**
+
 
 
 
