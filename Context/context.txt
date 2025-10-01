@@ -115,8 +115,9 @@ When asked a build solution, you must build solution as following  instructions:
   			b. all modules  read their  configuratio settings from that file
 			c. centrelize section in that file with "Feature Flags" ast the header of the file, if to create teh resource- by defual is it 'true".
   	9.3 modules solution:	   
-     		a. no hard-coded parameters or settings or configuration  all modules to use and read there settings from that local.tf file under environment directory  . 
-   			d. ensure all modules enable to use these with local.tf file under environment directory.
+     		a. group modules by the common definition under revlevat directory. i.e "network" with all relevant modules.. , "management" with all relevant modules , etc.. 
+            b. no hard-coded parameters or settings or configuration  all modules to use and read there settings from that local.tf file under environment directory  . 
+   			c. ensure all modules enable to use these with local.tf file under environment directory.
  	9.4 variables.tf under environment directory:
 			a. not to includes "defualt" in variables settings  , the modules and resources have to get those settings is mandatory  from local.tf central file 
 			b. to define only the variable type
@@ -179,6 +180,7 @@ Before saying "Solution Complete", verify:
 - [ ] All files reviewed
 
 **IF ANY CHECKBOX IS UNCHECKED, DO NOT DECLARE SOLUTION COMPLETE**
+
 
 
 
