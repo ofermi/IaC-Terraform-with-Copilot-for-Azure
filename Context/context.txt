@@ -107,7 +107,7 @@ When asked a build solution, you must build solution as following  instructions:
                  only to include the general solution.]
 
      9.2. guidence for that terraform structure:   
-         9.2.1  resources.tf one central file for building solution under dedicated environment:
+         9.2.1  resources.tf under environment directory- one central file for building solution under dedicated environment:
    		 	a. to included all resources to deploy , it should used with th the moduls resource under modules directory
    			b. each resources in that file  should be mark in relevant title comments 
 		 9.2.2 local.tf file under environment directory:
@@ -117,12 +117,16 @@ When asked a build solution, you must build solution as following  instructions:
   	9.3 modules solution:	   
      		a. no hard-coded parameters or settings or configuration  all modules to use and read there settings from that local.tf file under environment directory  . 
    			d. ensure all modules enable to use these with local.tf file under environment directory.
- 
+ 	9.4 variables.tf under environment directory:
+			a. not to includes "defualt" in variables settings  , the modules and resources have to get those settings is mandatory  from local.tf central file 
+			b. to define only the variable type
+    9.5 terraform.tfvars under environment directory:
+			a. only to include environment settings  as following:
+					- "Project configuration" 
+					- "Tags"
+					- "Network Address Spaces" 
 
- 	9.3 variables.tf 
-			a. not to includes "defual" settings , that setting is mandatory to set with the solution with the local.tf central file  
-
- 13. QA and fix errors :
+ 10. QA and fix errors :
       a. always during create solution scan the created files to fix error code.
       b. when solution is done  review all the terraform files solution and fix errors to ensure all categories created based on 
        the above requirements so that the terraform code is ready to deploy. if any consideration to fix or adjustment to do ,prompt it
@@ -175,6 +179,7 @@ Before saying "Solution Complete", verify:
 - [ ] All files reviewed
 
 **IF ANY CHECKBOX IS UNCHECKED, DO NOT DECLARE SOLUTION COMPLETE**
+
 
 
 
