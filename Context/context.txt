@@ -82,10 +82,10 @@ When asked a build solution, you must build solution as following  instructions:
        │   └──[consider create based user input - Dev as a default ]/
        |                 |
        │                 └── main.tf
-       │                 └── resources.tf [all resources to be created using resources that must defined under modules use also the local.tf if needed]. 
-       │                 └── local.tf  [ definitions settings for the modules resources to use with  resources.tf if needed] 	
-       │                 └── terraform.tfvars  [only to include "Project configuration" and "Tags" and "Network Address Spaces" ]
-	   │                 └── variables.tf  [ include all variables for the terraform architecture]
+       │                 └── resources.tf [all resources to be created with the solution, get the modules setting from local.tf . 
+       │                 └── local.tf  [ configuration settings for the modules ] 	
+       │                 └── terraform.tfvars  [only to include "Project configuration","Tags","Network Address Spaces" ]
+	   │                 └── variables.tf  [to define variables with no "default" the defualt must defime in local.tf]
        │                 └── output.tf [to be used by the modules or other directories]
        ├── modules/
        │   |
@@ -165,6 +165,7 @@ Before saying "Solution Complete", verify:
 - [ ] All files reviewed
 
 **IF ANY CHECKBOX IS UNCHECKED, DO NOT DECLARE SOLUTION COMPLETE**
+
 
 
 
