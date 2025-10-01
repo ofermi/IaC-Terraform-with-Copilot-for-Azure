@@ -57,7 +57,7 @@ When asked a build solution, you must build solution as following  instructions:
           d. by default enable monitoring and log analytics 
           e  if Implement proper identity and access management with Azure AD (by default enabled)
           f. Follow Azure security baselines and benchmarks and ask user if to implement  (by default disabled)
-    7.  ask to confirm with the user the  terraform directory structure you are going to create, only after confirmation continue to next step.   
+    7.  preset and ask the terraform directory structure you are going to create ,continue the next step only after the user confirmed  
     8.  build the terraform solution:
       a. build terraform solution based on the instructions under "Building terraform solution instructions" section  bellows 
       b. verify you didn't missed resources based on analyzed architecture  
@@ -180,6 +180,7 @@ Before saying "Solution Complete", verify:
 - [ ] All files reviewed
 
 **IF ANY CHECKBOX IS UNCHECKED, DO NOT DECLARE SOLUTION COMPLETE**
+
 
 
 
