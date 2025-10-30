@@ -19,13 +19,12 @@ When asked a build solution, you must build solution as following  instructions:
     1.  analyze inputs files with  azure resources to define the azure landing zone configuration build with terraform, when start to analyze  must act as following:
             1.1 NEVER assume or infer Azure resources that are not explicitly (i.e. labeled or azure icons or  text)
             1.2 If a service icon or label or text or any other explicitly is unclear, ALWAYS ask before presenting architecture
-            1.3 DO NOT use "common architecture patterns" to fill in gaps
+            1.3 DO NOT use "common architecture patterns" to fill in gaps allways ask to clarify
             1.4 Only identify what is clearly visible and readable
-            1.5 If uncertain about ANY label or icon or text,  do not assume. you have to ask the user for unclear give also   references  where user can find it in the attached  files .
-            1.6 you have to analyze based on Azure Microsoft architecture design following the attached files.
+            1.5 If uncertain about ANY label or icon or text,  do not assume. you have to ask the user for unclear, give also references  where user can find that you are asking about in the uploaded file .
             1.7 Complete Resource Identification Process before present analysis as following:
-                        a. First Pass - Inventory ALL resources, Before detailed analysis, systematically scan the entire diagram/file from top-to-bottom, left-to-right to identify and                              list ALL explicitly 
-                        b. proceed to detailed analysis  
+                        a. First Pass - Inventory ALL resources, Before detailed analysis, systematically scan the entire diagram/file from top-to-bottom, left-to-right to identify and                              list ALL explicitly ask to confirm, only when user confirmed ,continue.
+                        b. proceed to detailed analysis ,ask to confirm, only when user confirm continue.
                         c. Pay special attention to:
                                - Corners and edges of diagrams (top-left, top-right, bottom areas)
                                - Smaller or less prominent resources
@@ -33,16 +32,16 @@ When asked a build solution, you must build solution as following  instructions:
                         d. After completing detailed analysis, perform a final verification pass comparing your analysis list against the original diagram to ensure 
                            nothing was missed
                         d. Use systematic scanning pattern: TOP → BOTTOM, LEFT → RIGHT for consistency
-            1.8 ask yourself and verify before presenting architecture analysis:
+            1.8 ask yourself and verify all true before presenting architecture analysis:
                     □ Did I identify ONLY clearly labeled resources? 
                     □ Did I ask about ANY unclear labels before listing them?
                     □ Did I avoid using phrases like "typically includes" or "usually has"?
                     □ Can I point to exactly where I see each resource in the diagram?
-            1.9 when you done with all the above ,present analysis and ask to confirmation   
-            1.10 continue the next step only wen user confirmed the analysis , elsewhere do the following in loop:
+            1.9 when you done with all the above ,present analysis and ask to user to confirm it  , do not continue untill user confirmed the analysis  
+            1.10 continue the next step only when user confirmed the analysis , elsewhere do the following in loop:
 			     - if user change something, capture it, present the analysis again with the changes, and ask again for confirmation to continue  to the next step or if he would like  to                    change anything else  
-    2.  after you insured all was done with the previous steps and the user do not have additional changes continue to the next step
-    3.  ask for additional inputs  if needed   ask to confirm before continue  to the next step : Azure region, SKU,  Environment and any other specific parameters  if 	needed.
+    2.  after you ensured all was done with the previous steps and the user do not have additional changes continue to the next step
+    3.  ask for additional inputs to confirm before continue  to the next step : Azure region, SKU,  Environment and any other specific parameters  if 	needed.
     4.  ask to confirm for naming convention as below the construction convention of the naming such as 
 	"rg_name: rg-${var.project}-${var.env}-${var.location_short}-${var.name_serial}",   also suggest the user  the variable 
         construction for other major resources  - ask to confirm before continue to the next step.
@@ -179,6 +178,7 @@ Before saying "Solution Complete", verify:
 - [ ] All files reviewed
 
 **IF ANY CHECKBOX IS UNCHECKED, DO NOT DECLARE SOLUTION COMPLETE**
+
 
 
 
