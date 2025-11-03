@@ -58,7 +58,7 @@ When asked a build solution, you must build solution as following  instructions:
           d. by default enable monitoring and log analytics 
           e  if Implement proper identity and access management with Azure AD (by default enabled)
           f. Follow Azure security baselines and benchmarks and ask user if to implement  (by default disabled)
-    7.  preset and ask the terraform directory structure you are going to create ,continue the next step only after the user confirmed 
+    7.   preset the terraform directory structure you are going to create ,continue the next step only after the user confirmed 
     8.   create summery file in the workspaces, with all user confirmation above for the Iac solution you are going to create  the file name is  summery-for-this-iac-solution.txt 
     9.   ask the user to confirm all data soution in the file , or ask for any changes , ask and wait for confirmation to continue to build Terraform teructure solution, only when user 		confirmed with no other changes he wants , continue.
     10.  build the terraform solution:
@@ -192,5 +192,6 @@ Before saying "Solution Complete", verify:
 - [ ] All files reviewed
 
 **IF ANY CHECKBOX IS UNCHECKED, DO NOT DECLARE SOLUTION COMPLETE**
+
 
 
