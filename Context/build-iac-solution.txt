@@ -103,7 +103,7 @@ When asked a build solution, you must build solution as following  instructions:
        │   └──[consider create based user input - Dev as a default ]/
        |                 |
        │                 └── main.tf
-       │                 └── resources.tf [all resources to be created with the solution, get the modules setting from local.tf . 
+       │                 └── resources.tf [get the setting from local.tf and use it here to call seperate module at module directory). 
        │                 └── local.tf  [ include only here configuration and settings for the modules  ] 	
        │                 └── terraform.tfvars  [only to include "Project configuration","Tags","Network Address Spaces" ]
 	   │                 └── variables.tf  [to define variables type only. not not include "default" here only the "type"]
@@ -119,8 +119,8 @@ When asked a build solution, you must build solution as following  instructions:
 
      9.2. guidence for that terraform structure:   
          9.2.1  resources.tf under environment directory- one central file for building solution under dedicated environment:
-   		 	a. to included all resources to deploy , it should used with th the moduls resource under modules directory
-   			b. each resources in that file  should be mark in relevant title comments 
+   		 	a. to included all resources to deploy , it must used call to dedicated modules for each resource to be created , the module must be exist under modules directory
+   			b. each resources in that file should be mark in relevant title comments 
 		 9.2.2 local.tf file under environment directory:
    			a. all settings configuration such as: resource names, address spaces, regions, SKU, and other resource settings must as defined in that central file ,
   			b. all modules  read their  configuratio settings from that file
@@ -129,6 +129,7 @@ When asked a build solution, you must build solution as following  instructions:
      		a. group modules by the common definition under revlevat directory. i.e "network" with all relevant modules.. , "management" with all relevant modules , etc.. 
             b. no hard-coded parameters or settings or configuration  all modules to use and read there settings from that local.tf file under environment directory  . 
    			c. ensure all modules enable to use these with local.tf file under environment directory.
+			d. each resource must have dedicated module 
  	9.4 variables.tf under environment directory:
 			a. not to includes "defualt" in variables settings  , the modules and resources have to get those settings is mandatory  from local.tf central file 
 			b. to define only the variable type
@@ -192,6 +193,7 @@ Before saying "Solution Complete", verify:
 - [ ] All files reviewed
 
 **IF ANY CHECKBOX IS UNCHECKED, DO NOT DECLARE SOLUTION COMPLETE**
+
 
 
 
