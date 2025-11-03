@@ -61,25 +61,25 @@ When asked a build solution, you must build solution as following  instructions:
     7.  preset and ask the terraform directory structure you are going to create ,continue the next step only after the user confirmed 
     8.   create summery file in the workspaces, with all user confirmation above for the Iac solution you are going to create  the file name is  summery-for-this-iac-solution.txt 
     9.   ask the user to confirm all data soution in the file , or ask for any changes , ask and wait for confirmation to continue to build Terraform teructure solution, only when user 		confirmed with no other changes he wants , continue.
-    8.  build the terraform solution:
+    10.  build the terraform solution:
 	  a. the solution must included as mandatory all the information at  summery-for-this-iac-solution.txt file
       b. build terraform solution based on the instructions under "Building terraform solution instructions" section bellows 
       b. verify you didn't missed resources based on   summery-for-this-iac-solution.txt file
       c. when done to create terraform solution, analyze to identify ALL the resources have implemented and exists 
       d. verify at the end if resources are exists  based on the   summery-for-this-iac-solution.txt file
       e. always analyze your terraform solution to fix errors in the files and verify you didn't missed nothing from  summery-for-this-iac-solution.txt file 
-    9.  preset at the to the user the identified architecture configuration (resources, network, security, monitoring, etc..)
-    10. create GitHub CI-CD pipeline solution under new directory at the workspace 
-	11. when terraform solution is done:
-		11.1 review all the terraform files solution and fix errors based on the instructions under "Building terraform solution instructions" 
+    11.  preset at the to the user the identified architecture configuration (resources, network, security, monitoring, etc..)
+    12. create GitHub CI-CD pipeline solution under new directory at the workspace 
+	13. when terraform solution is done:
+		13.1. review all the terraform files solution and fix errors based on the instructions under "Building terraform solution instructions" 
 		section  bellows, to ensure all categories created based on the above requirements so that the terraform code is ready to deploy as following
-		11.2 if any consideration to fix or adjustment to do let user know 
-		11.3 never missing components and resources to create with the solution based on the architecture analysis the user confirmed which is the  summery-for-this-iac-solution.txt
-	    11.2 you are allow with no need additional permission from user to run a terminal commands to validate  the actual Terraform configuration you where created to fix the errors.
-		11.3. run over and over again terminal commands to validate  the actual Terraform configuration until you ensurd nomore errors.
-    12. before you complete the solution you must :
-		12.1 verify and adjust if needed any resources and component in the terraform solution which are missing based on the user requirements in the file  summery-for-this-iac-solution.txt
-		12.2 fix errors when needed 
+		13.2. if any consideration to fix or adjustment to do let user know 
+		13.3. never missing components and resources to create with the solution based on the architecture analysis the user confirmed which is the  summery-for-this-iac-solution.txt
+	    d. you are allow with no need additional permission from user to run a terminal commands to validate  the actual Terraform configuration you where created to fix the errors.
+		13.4. run over and over again terminal commands to validate  the actual Terraform configuration until you ensurd nomore errors.
+    14. before you complete the solution you must :
+		14.1 verify and adjust if needed any resources and component in the terraform solution which are missing based on the user requirements in the file  summery-for-this-iac-solution.txt
+		15.2 fix errors when needed 
 
 ### Building terraform solution instructions:
 - when create solution 
@@ -192,4 +192,5 @@ Before saying "Solution Complete", verify:
 - [ ] All files reviewed
 
 **IF ANY CHECKBOX IS UNCHECKED, DO NOT DECLARE SOLUTION COMPLETE**
+
 
