@@ -103,14 +103,14 @@ When asked a build solution, you must build solution as following  instructions:
        │   └──[consider create based user input - Dev as a default ]/
        |                 |
        │                 └── main.tf
-       │                 └── resources.tf [get the setting from local.tf and use it here to call seperate module at module directory). 
+       │                 └── resources.tf [get the setting from local.tf and use it here to call dedicate module from module directory). 
        │                 └── local.tf  [ include only here configuration and settings for the modules  ] 	
        │                 └── terraform.tfvars  [only to include "Project configuration","Tags","Network Address Spaces" ]
 	   │                 └── variables.tf  [to define variables type only. not not include "default" here only the "type"]
        │                 └── output.tf [to be used by the modules or other directories]
        ├── modules/
        │   |
-       │   └── [ to group modules solution by the same definition under revlevan directory. i.e "network" with all relevant modules.. ]/
+       │   └── [ each resorces must have dedicate module, group modules solution by the same definition under revlevan directory. i.e "network" with all relevant other modules.. ]/
        └── docs/
            |── architecture-diagrams/[save here the attached architecture for the solution]
            |── [save here the final "solution structure" that you build as file]
@@ -193,6 +193,7 @@ Before saying "Solution Complete", verify:
 - [ ] All files reviewed
 
 **IF ANY CHECKBOX IS UNCHECKED, DO NOT DECLARE SOLUTION COMPLETE**
+
 
 
 
